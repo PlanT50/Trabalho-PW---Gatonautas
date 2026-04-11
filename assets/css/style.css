@@ -27,3 +27,11 @@ main{
     margin-top: 150px;
     gap: 16px;
 }
+
+nav {
+  display: flex;
+  margin-top: 15px;
+  justify-content: center;
+  gap: 16px;
+}
+
