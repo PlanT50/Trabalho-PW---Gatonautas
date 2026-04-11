@@ -4,19 +4,44 @@ body{
     margin: 1;
 }
 
+.hero-buttons{
+  display: flex;
+  margin-top: 10px;
+
+}
+
+.hero a{
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(135deg, #7108a1 0%, #a63dff 55%, #c86bff 100%);
+  border-radius: 18px;
+  padding: 10px 16px;
+  border: solid 1px #b77bff;
+  border-color: transparent;
+
+  box-shadow:
+    0 0 8px rgba(171, 31, 226, 0.55),
+    0 0 18px rgba(171, 31, 226, 0.35),
+    0 6px 16px rgba(0, 0, 0, 0.45);
+
+    
+
+}
+
 
 .hero{
+  padding-left: 20px;
   padding-top: 30px;
 }
 
 .hero h1 {
+  font-size: 40px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   letter-spacing: 3px;
-  color: white;
-  text-shadow: 0 0 100px #4e0072;
 }
 
 .hero p {
+  line-height: 24px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
@@ -39,6 +64,7 @@ nav {
 }
 
 nav a {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     position: relative;
     text-decoration: none;
     color: #9ecbff;
