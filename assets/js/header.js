@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!header) return;
 
-  const currentPath = window.location.pathname.split("/").pop();
+  let currentPath = decodeURIComponent(window.location.pathname.split("/").pop() || "");
   if (currentPath === "") {
     currentPath = "PaginaInicial.html";
   }
