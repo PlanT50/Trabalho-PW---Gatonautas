@@ -2,30 +2,46 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>Gatonautas</title>
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <title>Pagina Inicial</title>
+        <link rel="stylesheet" href="assets/css/global.css" />
     </head>
     <body>
-        <nav>
-            <a href="#" data-section="inicio">Inicio</a>
-            <a href="#" data-section="tripulação">Tripulação</a>
-            <a href="#" data-section="loja">Loja</a> 
-        </nav>
+        <header class="site-header" data-header>
+            <div class="container">
+                <div class="site-header__bar">
+                    <a class="site-header__brand" href="index.html">
+                        <div class="site-header__logo">🪐</div>
+                        <div class="site-header__brand-text">
+                            <strong class="site-header__title">GATON IX</strong>
+                            <span class="site-header__subtitle">Ronrons além das estrelas</span>
+                        </div>
+                    </a>
 
-        <main>
-            <section id="inicio" class="hero">
-                <h1>
-                    SALVANDO PLANETAS <br> COM RONRONS
-                </h1>
-                <p>
-                    Somos a Gaton IX, uma tripulação de gatos astronautas <br> em uma missão de levar alegria, energia solar e <br> brinquedinhos espaciais a todos os cantos da galáxia.
-                </p>
+                    <button
+                    class="site-header__toggle"
+                    type="button"
+                    aria-label="Abrir menu"
+                    aria-expanded="false"
+                    data-menu-toggle
+                    ></button>
 
-            </section>
+                    <nav class="site-header__nav" aria-label="Principal">
+                    <ul class="site-header__menu">
+                        <li><a class="site-header__link" href="index.html">Início</a></li>
+                        <li><a class="site-header__link" href="tripulacao.html">Tripulação</a></li>
+                        <li><a class="site-header__link" href="missoes.html">Missões</a></li>
+                        <li><a class="site-header__link" href="loja.html">Loja</a></li>
+                        <li><a class="site-header__link" href="mensagens.html">Mensagens</a></li>
+                        <li><a class="site-header__link" href="voluntariado.html">Voluntariado</a></li>
+                        <li><a class="site-header__link" href="diario.html">Diário</a></li>
+                    </ul>
+                    </nav>
 
-        </main>
-
-        <script src="script.js"></script>
+                    <div class="site-header__actions">
+                        <a class="btn btn-primary site-header__mission-btn" href="missao.html">Entrar na missão</a>
+                    </div>
+                </div>
+            </div>
+        </header>
     </body>
 </html>
-
