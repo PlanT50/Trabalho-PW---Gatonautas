@@ -2,3 +2,20 @@ body{
     background-color: gray;
     color: white;
 }
+
+.secao{
+    display: block;
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 16px;
+  margin-top: 12px;
+}
+
+/*.secao.ativa{
+    display: none;
+}*/
+
+main{
+    display: flex;
+}
