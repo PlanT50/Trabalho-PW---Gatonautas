@@ -5,13 +5,26 @@ body{
 }
 
 
+.hero{
+  padding-top: 30px;
+}
 
-main{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 150px;
-    gap: 16px;
+.hero h1 {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow: 0 0 100px #4e0072;
+}
+
+.hero p {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+
+main {
+  max-width: 10000px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 nav {
