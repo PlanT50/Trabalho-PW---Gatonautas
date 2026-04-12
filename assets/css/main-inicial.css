@@ -7,3 +7,16 @@
     grid-template-columns: 1.05fr 1fr;
     gap: 50px;
 }
+
+.home-cat__btn {
+    display: flex;
+    gap: 24px;
+    margin-top: 12px;
+
+}
+
+.btn_1 {
+    border:  solid 1px;
+    border-color: red;
+
+}
