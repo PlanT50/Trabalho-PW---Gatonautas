@@ -1,0 +1,9 @@
+.cat-home {
+    padding-bottom: 32px;
+}
+
+.home-cat-box {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 50px;
+}
