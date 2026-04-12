@@ -26,3 +26,11 @@
     margin-top: 20px;
 
 }
+
+.home-cat__title {
+    font-size: 50px;
+    background: linear-gradient(to bottom, #ffffff 0%, #d9c2ff 45%, #6b4dff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent
+}
