@@ -1,7 +1,19 @@
 .cat-home {
     padding-bottom: 32px;
 }
+.home-cat_tag{
+    display: inline-flex;
+    padding: 10px;
+    background: linear-gradient(145deg,  rgba(16, 26, 83, 0.92), rgba(31, 36, 59, 0.96) );
+    margin-bottom: 16px;
+    font-size: 15px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 2px;
+    border: solid 1px;
+    border-color: rgb(75, 75, 75);
+    border-radius: 15px;
 
+}
 .home-cat-box {
     display: grid;
     grid-template-columns: 1.05fr 1fr;
