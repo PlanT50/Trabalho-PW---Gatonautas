@@ -34,3 +34,10 @@
     background-clip: text;
     color: transparent
 }
+
+.home-cat__media {
+  width: 100%;
+  opacity: 0.75;
+  -webkit-mask-image: radial-gradient(circle, black 25%, transparent 76%);
+  mask-image: radial-gradient(circle, black 25%, transparent 76%);
+}
