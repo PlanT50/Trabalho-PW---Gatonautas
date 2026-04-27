@@ -1,0 +1,17 @@
+.mission-box{
+    text-align: center;
+}
+
+.planets{
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+}
+.planet-card{
+    width: 320px;
+    height: 320px;
+    text-align: center;
+    
+
+}
+
