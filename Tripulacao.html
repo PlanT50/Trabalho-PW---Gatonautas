@@ -1,594 +1,130 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Tripula&ccedil;&atilde;o</title>
-        <link rel="stylesheet" href="assets/css/global.css" />
-        <link rel="stylesheet" href="assets/css/header.css" />
-        <link rel="stylesheet" href="assets/css/footer.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripulação</title>
 
-<!--Style provisório-->
-        <style>
-            :root {
-                --space-black:   #05050f;
-                --space-deep:    #0b0b1e;
-                --nebula-purple: #6c3fc5;
-                --nebula-violet: #9b5de5;
-                --star-gold:     #f5c842;
-                --cosmic-teal:   #00d4c8;
-                --card-bg:       #0f0f28;
-                --card-border:   rgba(155,93,229,.25);
-                --text-primary:  #e8e8f4;
-                --text-secondary:#9090b8;
-                --font-display:  'Syne', sans-serif;
-                --font-mono:     'Space Mono', monospace;
-            }
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/tripulacao.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="site-header" data-header>
+        <div class="container">
+            <div class="site-header__bar">
+                <a class="site-header__brand" href="PaginaInicial.html">
+                    <div class="site-header__logo">🪐</div>
+                    <div class="site-header__brand-text">
+                        <strong class="site-header__title">GATON IX</strong>
+                        <span class="site-header__subtitle">Ronrons além das estrelas</span>
+                    </div>
+                </a>
 
-            /* ── GLOBAL RESETS ── */
-            *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-            body {
-                background-color: var(--space-black);
-                color: var(--text-primary);
-                font-family: var(--font-mono);
-                overflow-x: hidden;
-            }
-
-            /* ── STAR FIELD ── */
-            .starfield {
-                position: fixed; inset: 0; z-index: 0;
-                pointer-events: none; overflow: hidden;
-            }
-            .starfield span {
-                position: absolute; border-radius: 50%;
-                background: #fff; opacity: 0;
-                animation: twinkle var(--dur,3s) var(--delay,0s) infinite ease-in-out;
-            }
-            @keyframes twinkle {
-                0%,100%{ opacity:0; transform:scale(1); }
-                50%    { opacity:var(--bright,.8); transform:scale(var(--sz,1.5)); }
-            }
-
-            /* ── LAYOUT ── */
-            main { position: relative; z-index: 1; }
-            .container { max-width:1200px; margin:0 auto; padding:0 1.5rem; }
-
-            /* ── HERO ── */
-            .crew-hero {
-                padding: 7rem 1.5rem 4rem;
-                text-align: center;
-                position: relative;
-            }
-            .crew-hero::before {
-                content:'';
-                position:absolute; top:0; left:50%; transform:translateX(-50%);
-                width:600px; height:400px;
-                background:radial-gradient(ellipse at center,rgba(108,63,197,.35) 0%,transparent 70%);
-                pointer-events:none;
-            }
-            .crew-hero__tag {
-                display:block;
-                font-family:var(--font-mono);
-                font-size:.7rem; letter-spacing:.3em;
-                color:var(--cosmic-teal);
-                text-transform:uppercase;
-                margin-bottom:1.2rem;
-            }
-            .crew-hero__title {
-                font-family:var(--font-display);
-                font-size:clamp(2.4rem,7vw,5rem);
-                font-weight:800; line-height:1.05;
-                color:#fff; letter-spacing:-.02em;
-                margin-bottom:1.2rem;
-            }
-            .crew-hero__title span { color:var(--star-gold); }
-            .crew-hero__desc {
-                max-width:560px; margin:0 auto 2.5rem;
-                font-size:.9rem; line-height:1.8;
-                color:var(--text-secondary);
-            }
-
-            /* ── FILTERS ── */
-            .crew-filters {
-                display:flex; gap:.6rem;
-                justify-content:center; flex-wrap:wrap;
-                margin-bottom:3.5rem; padding:0 1rem;
-            }
-            .filter-btn {
-                font-family:var(--font-mono);
-                font-size:.7rem; letter-spacing:.15em;
-                text-transform:uppercase;
-                padding:.45rem 1.1rem; border-radius:2rem;
-                border:1px solid rgba(155,93,229,.4);
-                background:transparent; color:var(--text-secondary);
-                cursor:pointer; transition:all .2s ease;
-            }
-            .filter-btn:hover, .filter-btn.active {
-                background:var(--nebula-purple);
-                border-color:var(--nebula-purple); color:#fff;
-            }
-
-            /* ── CREW COUNT ── */
-            .crew-count {
-                text-align:center; margin-bottom:2rem;
-                font-size:.7rem; letter-spacing:.2em;
-                color:var(--text-secondary); text-transform:uppercase;
-            }
-            .crew-count strong {
-                color:var(--star-gold);
-                font-family:var(--font-display); font-size:1rem;
-            }
-
-            /* ── GRID ── */
-            .crew-section { padding:0 1.5rem 6rem; }
-            .crew-grid {
-                display:grid;
-                grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
-                gap:1.5rem; max-width:1200px; margin:0 auto;
-            }
-
-            /* ── CARD ── */
-            .crew-card {
-                background:var(--card-bg);
-                border:1px solid var(--card-border);
-                border-radius:16px; overflow:hidden;
-                cursor:pointer; position:relative;
-                transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease;
-                animation:cardIn .5s ease both;
-            }
-            .crew-card::before {
-                content:''; position:absolute; inset:0; border-radius:16px;
-                background:linear-gradient(135deg,rgba(155,93,229,.08) 0%,transparent 60%);
-                pointer-events:none;
-            }
-            @keyframes cardIn {
-                from { opacity:0; transform:translateY(20px); }
-                to   { opacity:1; transform:translateY(0); }
-            }
-            .crew-card:hover {
-                transform:translateY(-6px);
-                border-color:rgba(155,93,229,.7);
-                box-shadow:0 16px 48px rgba(108,63,197,.3);
-            }
-
-            /* Card image */
-            .crew-card__img-wrap {
-                position:relative; height:220px;
-                background:linear-gradient(160deg,#12123a 0%,#1a0a3a 100%);
-                overflow:hidden;
-            }
-            .crew-card__img-wrap::after {
-                content:''; position:absolute;
-                bottom:0; left:0; right:0; height:80px;
-                background:linear-gradient(to top,var(--card-bg),transparent);
-            }
-            .crew-card__img {
-                width:100%; height:100%; object-fit:cover;
-                transition:transform .5s ease;
-                filter:saturate(.9) brightness(.95);
-            }
-            .crew-card:hover .crew-card__img { transform:scale(1.06); }
-
-            /* Rank badge */
-            .crew-card__rank {
-                position:absolute; top:12px; right:12px;
-                font-family:var(--font-mono);
-                font-size:.6rem; letter-spacing:.15em; text-transform:uppercase;
-                padding:.3rem .7rem; border-radius:2rem;
-                background:rgba(5,5,15,.75);
-                border:1px solid rgba(245,200,66,.5);
-                color:var(--star-gold); backdrop-filter:blur(6px);
-            }
-
-            /* Status dot */
-            .crew-card__status {
-                position:absolute; top:14px; left:14px;
-                display:flex; align-items:center; gap:5px;
-                font-family:var(--font-mono);
-                font-size:.58rem; letter-spacing:.1em; color:#00e5a0;
-                text-transform:uppercase;
-                background:rgba(5,5,15,.7);
-                padding:.28rem .65rem; border-radius:2rem;
-                backdrop-filter:blur(6px);
-            }
-            .status-dot {
-                width:6px; height:6px; border-radius:50%;
-                background:#00e5a0;
-                animation:pulse-dot 2s ease infinite;
-            }
-            @keyframes pulse-dot {
-                0%,100%{ opacity:1; transform:scale(1); }
-                50%    { opacity:.5; transform:scale(.7); }
-            }
-
-            /* Card body */
-            .crew-card__body  { padding:1.2rem 1.4rem 1.5rem; }
-            .crew-card__id    { font-size:.62rem; letter-spacing:.2em; color:var(--nebula-violet); text-transform:uppercase; margin-bottom:.3rem; }
-            .crew-card__name  { font-family:var(--font-display); font-size:1.25rem; font-weight:800; color:#fff; margin-bottom:.25rem; letter-spacing:-.01em; }
-            .crew-card__role  { font-size:.72rem; color:var(--cosmic-teal); letter-spacing:.08em; text-transform:uppercase; margin-bottom:1rem; }
-            .crew-card__divider { height:1px; background:linear-gradient(to right,var(--nebula-purple),transparent); margin-bottom:1rem; opacity:.4; }
-            .crew-card__quirk { font-size:.78rem; line-height:1.65; color:var(--text-secondary); font-style:italic; }
-            .crew-card__quirk::before { content:'"'; }
-            .crew-card__quirk::after  { content:'"'; }
-            .crew-card__tags  { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1rem; }
-            .tag {
-                font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
-                padding:.2rem .55rem; border-radius:2rem;
-                border:1px solid rgba(155,93,229,.3); color:var(--nebula-violet);
-            }
-
-            /* ── LOADING ── */
-            .crew-loading {
-                grid-column:1/-1; text-align:center; padding:5rem 0;
-                color:var(--text-secondary);
-            }
-            .orbit-loader {
-                width:60px; height:60px; border-radius:50%;
-                border:2px solid transparent;
-                border-top-color:var(--nebula-violet);
-                border-right-color:var(--cosmic-teal);
-                animation:orbit 1s linear infinite;
-                margin:0 auto 1.2rem;
-            }
-            @keyframes orbit { to { transform:rotate(360deg); } }
-            .crew-loading p {
-                font-size:.75rem; letter-spacing:.2em; text-transform:uppercase;
-                animation:blink 1.5s ease infinite;
-            }
-            @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.4} }
-
-            /* ── ERROR ── */
-            .crew-error { grid-column:1/-1; text-align:center; padding:4rem 2rem; color:var(--text-secondary); }
-            .crew-error .emoji { font-size:3rem; margin-bottom:1rem; display:block; }
-            .crew-error h3 { font-family:var(--font-display); font-size:1.2rem; color:var(--text-primary); margin-bottom:.5rem; }
-            .retry-btn {
-                margin-top:1.2rem;
-                font-family:var(--font-mono); font-size:.7rem;
-                letter-spacing:.15em; text-transform:uppercase;
-                padding:.6rem 1.4rem; border-radius:2rem;
-                border:1px solid var(--nebula-purple);
-                background:transparent; color:var(--nebula-violet);
-                cursor:pointer; transition:all .2s;
-            }
-            .retry-btn:hover { background:var(--nebula-purple); color:#fff; }
-
-            /* ── MODAL ── */
-            .modal-overlay {
-                position:fixed; inset:0; z-index:100;
-                background:rgba(5,5,15,.88); backdrop-filter:blur(10px);
-                display:flex; align-items:center; justify-content:center;
-                opacity:0; pointer-events:none;
-                transition:opacity .3s ease; padding:1rem;
-            }
-            .modal-overlay.open { opacity:1; pointer-events:all; }
-            .modal {
-                background:#0f0f28;
-                border:1px solid rgba(155,93,229,.4);
-                border-radius:20px; max-width:540px; width:100%;
-                overflow:hidden; position:relative;
-                transform:scale(.92) translateY(20px);
-                transition:transform .3s ease;
-            }
-            .modal-overlay.open .modal { transform:scale(1) translateY(0); }
-            .modal__img-wrap {
-                height:260px; background:#12123a; overflow:hidden; position:relative;
-            }
-            .modal__img-wrap::after {
-                content:''; position:absolute; bottom:0; left:0; right:0; height:100px;
-                background:linear-gradient(to top,#0f0f28,transparent);
-            }
-            .modal__img  { width:100%; height:100%; object-fit:cover; }
-            .modal__body { padding:1.5rem 2rem 2rem; }
-            .modal__id   { font-size:.62rem; letter-spacing:.2em; color:var(--nebula-violet); text-transform:uppercase; margin-bottom:.4rem; }
-            .modal__name { font-family:var(--font-display); font-size:1.8rem; font-weight:800; color:#fff; letter-spacing:-.02em; }
-            .modal__role { font-size:.75rem; color:var(--cosmic-teal); text-transform:uppercase; letter-spacing:.1em; margin-top:.2rem; }
-            .modal__stats {
-                display:grid; grid-template-columns:repeat(3,1fr);
-                gap:.8rem; margin:1.2rem 0;
-            }
-            .stat {
-                background:rgba(255,255,255,.04);
-                border:1px solid rgba(155,93,229,.2);
-                border-radius:10px; padding:.7rem .8rem; text-align:center;
-            }
-            .stat__label { font-size:.58rem; letter-spacing:.15em; color:var(--text-secondary); text-transform:uppercase; margin-bottom:.25rem; }
-            .stat__val   { font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--star-gold); }
-            .modal__bio  { font-size:.8rem; line-height:1.8; color:var(--text-secondary); margin-bottom:1.2rem; }
-            .modal__close {
-                position:absolute; top:14px; right:14px;
-                width:34px; height:34px; border-radius:50%;
-                background:rgba(5,5,15,.7);
-                border:1px solid rgba(255,255,255,.15);
-                color:var(--text-secondary); font-size:1rem; cursor:pointer;
-                display:flex; align-items:center; justify-content:center;
-                transition:all .2s; backdrop-filter:blur(6px);
-            }
-            .modal__close:hover { background:var(--nebula-purple); color:#fff; border-color:var(--nebula-purple); }
-
-            /* ── FOOTER ── */
-            .footer {
-                position:relative; z-index:1;
-                background:var(--space-deep);
-                border-top:1px solid rgba(155,93,229,.2);
-                padding:3rem 1.5rem;
-            }
-            .footer-grid {
-                max-width:1200px; margin:0 auto;
-                display:grid;
-                grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-                gap:2rem;
-            }
-            .footer h3 { font-family:var(--font-display); font-size:.8rem; letter-spacing:.2em; color:var(--text-secondary); margin-bottom:.8rem; }
-            .footer p  { font-size:.78rem; color:rgba(144,144,184,.6); line-height:1.6; }
-            .footer-links { display:flex; gap:1rem; }
-            .footer-links a { color:var(--text-secondary); font-size:1.1rem; transition:color .2s; }
-            .footer-links a:hover { color:var(--nebula-violet); }
-        </style>
-        
-    </head>
-    <body>
-        <header class="site-header" data-header>
-            <div class="container">
-                <div class="site-header__bar">
-                    <a class="site-header__brand" href="PaginaInicial.html">
-                        <div class="site-header__logo">🪐</div>
-                        <div class="site-header__brand-text">
-                            <strong class="site-header__title">GATON IX</strong>
-                            <span class="site-header__subtitle">Ronrons al&eacute;m das estrelas</span>
-                        </div>
-                    </a>
-
-                    <button
+                <button
                     class="site-header__toggle"
                     type="button"
                     aria-label="Abrir menu"
                     aria-expanded="false"
-                    data-menu-toggle
-                    ></button>
+                    data-menu-toggle>
+                </button>
 
-                    <nav class="site-header__nav" aria-label="Principal">
+                <nav class="site-header__nav" aria-label="Principal">
                     <ul class="site-header__menu">
-                        <li><a class="site-header__link" href="PaginaInicial.html">In&iacute;cio</a></li>
-                        <li><a class="site-header__link" href="Tripulacao.html">Tripula&ccedil;&atilde;o</a></li>
-                        <li><a class="site-header__link" href="Missoes.html">Miss&otilde;es</a></li>
+                        <li><a class="site-header__link" href="PaginaInicial.html">Início</a></li>
+                        <li><a class="site-header__link" href="Tripulacao.html">Tripulação</a></li>
+                        <li><a class="site-header__link" href="Missoes.html">Missões</a></li>
                         <li><a class="site-header__link" href="Loja.html">Loja</a></li>
                         <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
                         <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
-                        <li><a class="site-header__link" href="Diario.html">Di&aacute;rio</a></li>
+                        <li><a class="site-header__link" href="Diario.html">Diário</a></li>
                     </ul>
-                    </nav>
+                </nav>
 
-                    <div class="site-header__actions">
-                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na miss&atilde;o</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-                    <!-- Tripulação -->
-
-        <main>
-
-            <section class="trip">
-                <span class="trip_tag">⭐✦ Dossiê da nave ✦⭐</span> <!-- Escolher só um emoji -->
-                <h1 class="trip_titulo">Conheça a<br><span>Tripulação</span></h1>
-                <p class="trip_desc">Os felinos mais corajosos, inteligentes e absolutamente disfuncionais
-                    do universo. Cada um recrutado via satélite, cada um com uma missão —
-                    e uma soneca técnica agendada.
-                </p>
-                <div class="trip_trabalho" id="filterBar">
-                    <button class="filter-btn active" data-filter="all">Todos</button>
-                    <button class="filter-btn" data-filter="Comandante">Comandantes</button>
-                    <button class="filter-btn" data-filter="Piloto">Pilotos</button>
-                    <button class="filter-btn" data-filter="Engenheiro">Engenheiros</button>
-                    <button class="filter-btn" data-filter="Cientista">Cientistas</button>
-                    <button class="filter-btn" data-filter="Médico">Médicos</button>
-                </div>
-            </section>
-
-            <section class="trip_membros" aria-label="Membros da Tripulação">
-                <div class="trip_qnt" id="tripQnt"></div>
-                <div class="trip_exib" id="tripExib">
-                    <div class="trip_teladeloading">
-                        <div class="loading"></div>
-                        <p>Recrutando tripulantes...</p>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        
-        <!-- MODAL -->
-        <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalName">
-            <div class="modal">
-                <button class="modal__close" id="modalClose" aria-label="Fechar">✕</button>
-                <div class="modal__img-wrap">
-                    <img class="modal__img" id="modalImg" src="" alt="">
-                </div>
-                <div class="modal__body">
-                    <p class="modal__id"    id="modalId"></p>
-                    <h2 class="modal__name" id="modalName"></h2>
-                    <p class="modal__role"  id="modalRole"></p>
-                    <div class="modal__stats" id="modalStats"></div>
-                    <p class="modal__bio"   id="modalBio"></p>
-                    <div class="crew-card__tags" id="modalTags"></div>
+                <div class="site-header__actions">
+                    <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na missão</a>
                 </div>
             </div>
         </div>
+    </header>
 
-        <!-- Aleatorizador de dados -->
-         <script>
-            var NOMES = ['Laranja de Kuiper','Tom Vega','Felino Deneb','Katty Omega','Malhado Meteoro',
-            'Bigode de Andrômeda','Astro Garfield','Whiskers Cosmo','Echo Peludo','Pixel Garras',
-            'Vulcan Pelagem','Ziggy Stardust','Lyra Miau','Zenith Siamês','Quasar Pata'];
-            var FUNCOES = ['Comandante','Piloto','Engenheiro','Cientista','Médico'];
-            var CURIOSIDADES = [
-            'Dorme em cima do painel de controle durante viagens longas',
-            'Alérgico à poeira estelar mas insiste em explorar nebulosas',
-            'Só aceita ordens se oferecerem petiscos em troca',
-            'Guarda um novelo de fio como item de emergência na mochila',
-            'Faz ronrons tão altos que interferem no sonar da nave',
-            'Tem medo de aspiradores de pó intergalácticos',
-            'Medita virando a nave de cabeça para baixo toda manhã',
-            'Perdeu 3 caixas de areia. Ninguém sabe como.',
-            'Comunica-se em morse com a cauda durante missões',
-            'Coleciona amostras de rochas de cada planeta visitado'];
-            var SKILLS = ['Navegação','Engenharia','Medicina','Física Quântica','Culinária Espacial',
-                       'Comunicações','Stealth','Xenobiologia','Pilotagem','Mecânica'];
-            var PLANETAS = ['Terra','Marte','Vênus','Kepler-422b','Ross 128b','Júpiter','Plutão','Gliese 667Cc']
+    <main>
+        <section class="trip">
+            <span class="trip_tag">⭐✦ Dossiê da nave ✦⭐</span>
+            <h1 class="trip_titulo">Conheça a<br><span>Tripulação</span></h1>
+            <p class="trip_desc">
+                Os felinos mais corajosos, inteligentes e absolutamente disfuncionais
+                do universo. Cada um recrutado via satélite, cada um com uma missão —
+                e uma soneca técnica agendada.
+            </p>
 
-            function randOf(arr)      { return arr[Math.floor(Math.random()*arr.length)]; }
-            function randInt(min,max) { return Math.floor(Math.random()*(max-min+1))+min; }
+            <div class="trip_trabalho" id="filterBar">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="Comandante">Comandantes</button>
+                <button class="filter-btn" data-filter="Piloto">Pilotos</button>
+                <button class="filter-btn" data-filter="Engenheiro">Engenheiros</button>
+                <button class="filter-btn" data-filter="Cientista">Cientistas</button>
+                <button class="filter-btn" data-filter="Médico">Médicos</button>
+            </div>
+        </section>
 
-            function buildMember(catData, index) {
-            return {
-                id:       'GX-' + String(index+1).padStart(3,'0'),
-                nome:     NOMES[index % NOMES.length],
-                funcao:     randOf(FUNCOES),
-                curiosidade:    randOf(CURIOSIDADES),
-                skills:   SKILLS.slice().sort(function(){ return Math.random()-.5; }).slice(0,3),
-                planeta:   randOf(PLANETAS),
-                missao: randInt(3,47),
-                rank:     randInt(1,5),
-                img:      catData.url
-            }
-        }
-
-        var allCrew = [];
-        var activeFilter = 'all';
-
-        function renderCard(member, delay) {
-            var card = document.createElement('div');
-            card.className = 'crew-card';
-            card.dataset.role = member.funcao;
-            card.style.animationDelay = delay + 'ms';
-            card.innerHTML =
-                '<div class="crew-card__img-wrap">' +
-                    '<span class="crew-card__status"><span class="status-dot"></span>A bordo</span>' +
-                    '<span class="crew-card__rank">⭐ Rank ' + member.rank + '</span>' +
-                    '<img class="crew-card__img" src="' + member.img + '" alt="Foto de ' + member.nome + '" loading="lazy">' +
-                '</div>' +
-                '<div class="crew-card__body">' +
-                    '<p class="crew-card__id">' + member.id + '</p>' +
-                    '<h3 class="crew-card__name">' + member.nome + '</h3>' +
-                    '<p class="crew-card__role">' + member.funcao + '</p>' +
-                    '<div class="crew-card__divider"></div>' +
-                    '<p class="crew-card__quirk">' + member.curiosidade + '</p>' +
-                    '<div class="crew-card__tags">' +
-                        member.skills.map(function(s){ return '<span class="tag">' + s + '</span>'; }).join('') +
-                    '</div>' +
-                '</div>';
-            card.addEventListener('click', function(){ openModal(member); });
-            return card;
-        }
-
-        function renderGrid(crew) {
-            var grid    = document.getElementById('tripExib');
-            var countEl = document.getElementById('tripQnt');
-            grid.innerHTML = '';
-            var filtered = activeFilter === 'all'
-                ? crew
-                : crew.filter(function(m){ return m.funcao === activeFilter; });
-            countEl.innerHTML = filtered.length
-                ? '<strong>' + filtered.length + '</strong> tripulantes encontrados'
-                : '';
-            if (!filtered.length) {
-                grid.innerHTML = '<div class="crew-error"><span class="emoji">🔭</span><h3>Nenhum tripulante encontrado</h3><p>Tente outro filtro de função.</p></div>';
-                return;
-            }
-            filtered.forEach(function(m,i){ grid.appendChild(renderCard(m, i*60)); });
-        }
-
-        function fetchCrew() {
-            document.getElementById('tripExib').innerHTML =
-                '<div class="crew-loading"><div class="orbit-loader"></div><p>Recrutando tripulantes...</p></div>';
-            fetch('https://api.thecatapi.com/v1/images/search?limit=15&size=med')
-                .then(function(r){ if(!r.ok) throw new Error(); return r.json(); })
-                .then(function(cats){
-                    allCrew = cats.map(buildMember);
-                    renderGrid(allCrew);
-                })
-                .catch(function(){
-                    document.getElementById('tripExib').innerHTML =
-                        '<div class="crew-error">' +
-                        '<span class="emoji">😿</span>' +
-                        '<h3>Sinal perdido no espaço</h3>' +
-                        '<p>Não conseguimos contactar o banco de dados felino.<br>Tente novamente em instantes.</p>' +
-                        '<button class="retry-btn" id="retryBtn">↻ Tentar novamente</button>' +
-                        '</div>';
-                    var btn = document.getElementById('retryBtn');
-                    if (btn) btn.addEventListener('click', fetchCrew);
-                });
-        }
-
-        function openModal(m) {
-            document.getElementById('modalImg').src         = m.img;
-            document.getElementById('modalImg').alt         = 'Foto de ' + m.nome;
-            document.getElementById('modalId').textContent   = m.id;
-            document.getElementById('modalName').textContent = m.nome;
-            document.getElementById('modalRole').textContent = m.funcao;
-            document.getElementById('modalStats').innerHTML  =
-                '<div class="stat"><div class="stat__label">Missões</div><div class="stat__val">' + m.missao + '</div></div>' +
-                '<div class="stat"><div class="stat__label">Rank</div><div class="stat__val">⭐ ' + m.rank + '</div></div>' +
-                '<div class="stat"><div class="stat__label">Planeta base</div><div class="stat__val" style="font-size:.75rem">' + m.planeta + '</div></div>';
-            document.getElementById('modalBio').textContent =
-                'Especialista em ' + m.skills.join(', ').toLowerCase() + ', ' + m.nome +
-                ' é um dos membros mais indispensáveis — e imprevisíveis — da Gaton IX. "' + m.curiosidade + '".';
-            document.getElementById('modalTags').innerHTML =
-                m.skills.map(function(s){ return '<span class="tag">' + s + '</span>'; }).join('');
-            document.getElementById('modalOverlay').classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('modalOverlay').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('modalClose').addEventListener('click', closeModal);
-        document.getElementById('modalOverlay').addEventListener('click', function(e){
-            if (e.target === document.getElementById('modalOverlay')) closeModal();
-        });
-        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
-
-        document.getElementById('filterBar').addEventListener('click', function(e){
-            var btn = e.target.closest('.filter-btn');
-            if (!btn) return;
-            document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
-            btn.classList.add('active');
-            activeFilter = btn.dataset.filter;
-            renderGrid(allCrew);
-        });
-
-        fetchCrew();
-
-         </script>
-
-        <footer class="footer">
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-brand">
-                        <h3>GATON IX</h3>
-                        <p>Uma família disfuncional que ama explorar o cosmos</p>
-                    </div>
-
-                    <div class="footer-social">
-                        <h3>SIGA A GATON IX</h3>
-                        <div class="footer-links">
-                        <a href="#"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="footer-email">
-                        <h3>RECEBA ATUALIZAÇÕES</h3>
-                    </div>
+        <section class="trip_membros" aria-label="Membros da Tripulação">
+            <div class="trip_qnt" id="tripQnt"></div>
+            <div class="trip_exib" id="tripExib">
+                <div class="crew-loading">
+                    <div class="orbit-loader"></div>
+                    <p>Recrutando tripulantes...</p>
                 </div>
             </div>
-        </footer>
+        </section>
+    </main>
 
-        <script src="assets/js/header.js"></script>
-    </body>
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalName">
+        <div class="modal">
+            <button class="modal__close" id="modalClose" aria-label="Fechar">✕</button>
+
+            <div class="modal__img-wrap">
+                <img class="modal__img" id="modalImg" src="" alt="">
+            </div>
+
+            <div class="modal__body">
+                <p class="modal__id" id="modalId"></p>
+                <h2 class="modal__name" id="modalName"></h2>
+                <p class="modal__role" id="modalRole"></p>
+                <div class="modal__stats" id="modalStats"></div>
+                <p class="modal__bio" id="modalBio"></p>
+                <div class="crew-card__tags" id="modalTags"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>GATON IX</h3>
+                    <p>Uma família disfuncional que ama explorar o cosmos</p>
+                </div>
+
+                <div class="footer-social">
+                    <h3>SIGA A GATON IX</h3>
+                    <div class="footer-links">
+                        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-email">
+                    <h3>RECEBA ATUALIZAÇÕES</h3>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/tripulacao.js"></script>
+</body>
 </html>
