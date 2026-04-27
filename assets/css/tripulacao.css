@@ -193,6 +193,14 @@
     padding: 0.3rem 0.65rem;
 }
 
+.crew-card__status.mission {
+  color: #ff4d4f; /* laranja */
+}
+
+.crew-card__status.mission .status-dot {
+  background: #ff4d4f;
+}
+
 .status-dot {
     width: 6px;
     height: 6px;
