@@ -1,0 +1,202 @@
+.mensagens-home {
+    padding: 70px 0 90px;
+    color: #ffffff;
+}
+
+.mensagens-box {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.mensagens-content {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.mensagens-tag {
+    color: #9ee7ff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+
+.mensagens-title {
+    color: #ffffff;
+    margin-bottom: 18px;
+    text-shadow: 0 0 18px rgba(158, 231, 255, 0.35);
+}
+
+.mensagens-text {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #d7e9ff;
+    line-height: 1.7;
+}
+
+.mensagens-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 32px;
+}
+
+.mensagens-card {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(158, 231, 255, 0.28);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 0 28px rgba(75, 198, 255, 0.09);
+    backdrop-filter: blur(10px);
+}
+
+.mensagens-card h2 {
+    color: #9ee7ff;
+    margin-bottom: 22px;
+    font-size: 1.6rem;
+}
+
+#formMensagem label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: #9ee7ff;
+    font-weight: 700;
+}
+
+#formMensagem input,
+#formMensagem textarea,
+#formMensagem select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(158, 231, 255, 0.35);
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    transition: 0.25s;
+}
+
+#formMensagem input:focus,
+#formMensagem textarea:focus,
+#formMensagem select:focus {
+    border-color: rgba(158, 231, 255, 0.85);
+    box-shadow: 0 0 14px rgba(158, 231, 255, 0.25);
+    background: rgba(255, 255, 255, 0.09);
+}
+
+#formMensagem input::placeholder,
+#formMensagem textarea::placeholder {
+    color: rgba(255, 255, 255, 0.48);
+}
+
+#formMensagem select option {
+    background: #111827;
+    color: #ffffff;
+}
+
+#formMensagem textarea {
+    resize: none;
+    min-height: 130px;
+}
+
+#formMensagem button {
+    width: 100%;
+    margin-top: 22px;
+}
+
+.mensagens-area {
+    display: grid;
+    gap: 18px;
+}
+
+.holograma {
+    padding: 22px;
+    border-radius: 18px;
+    background: rgba(82, 214, 255, 0.1);
+    border: 1px solid rgba(158, 231, 255, 0.45);
+    box-shadow: 0 0 20px rgba(82, 214, 255, 0.18);
+    animation: flutuarHolograma 3s ease-in-out infinite;
+}
+
+.holograma::before {
+    content: "✦ Holograma recebido";
+    display: block;
+    color: #9ee7ff;
+    font-size: 0.82rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.holograma h3 {
+    margin: 0 0 10px;
+    color: #ffffff;
+}
+
+.holograma p {
+    color: #dff7ff;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+.mensagem-tag {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: rgba(199, 125, 255, 0.22);
+    color: #f0d7ff;
+    font-size: 0.85rem;
+}
+
+.mensagem-data {
+    font-size: 0.8rem;
+    color: #b7c9d9;
+    margin-top: 9px;
+}
+
+.mensagens-vazio {
+    text-align: center;
+    color: #d7e9ff;
+    padding: 34px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.mensagens-limpar {
+    margin-top: 18px;
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    background: transparent;
+    color: #ffb3c7;
+    border: 1px solid rgba(255, 179, 199, 0.45);
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.mensagens-limpar:hover {
+    background: rgba(255, 179, 199, 0.08);
+    box-shadow: 0 0 14px rgba(255, 179, 199, 0.15);
+}
+
+@keyframes flutuarHolograma {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@media (max-width: 900px) {
+    .mensagens-grid {
+        grid-template-columns: 1fr;
+    }
+}
