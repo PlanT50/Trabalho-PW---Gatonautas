@@ -1,0 +1,59 @@
+.mission-box{
+    text-align: center;
+}
+
+.planets{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    justify-items: center;
+    margin-top: 32px;
+}
+
+.planet-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 100%;
+    padding: 16px;
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.btn{
+    margin-top: 10px;
+}
+
+.text-planet{
+margin-top: 10px;
+}
+
+.coruscant{
+    background-image: url(../imgs/coruscant.webp);
+}
+
+.tatooine{
+    background-image: url(../imgs/tatooine.jpg);
+}
+
+.krypton{
+    background-image: url(../imgs/krypton.webp);
+}
+
+.namekusei{
+    background-image: url(../imgs/namek-dragon-ball.webp);
+}
+
+.cybertron{
+    background-image: url(../imgs/cybertron.jpg);
+}
+
+.caprica{
+    background-image: url(../imgs/battlestar-galactica_caprica.avif);
+}
+
