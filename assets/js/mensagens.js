@@ -16,7 +16,7 @@ const botaoLimpar = document.getElementById("limparMensagens");
 async function carregarMensagens() {
     try {
         const resposta = await fetch(API_URL, {
-            headers: HEADERS_BASE  // ← adicionado
+            headers: HEADERS_BASE
         });
         if (!resposta.ok) throw new Error("Erro ao carregar mensagens");
         const mensagens = await resposta.json();
@@ -79,12 +79,12 @@ form.addEventListener("submit", async (event) => {
     try {
         const resposta = await fetch(API_URL, {
             method: "POST",
-            headers: HEADERS_JSON,  // ← atualizado
+            headers: HEADERS_JSON,
             body: JSON.stringify({ nome, planeta, tipo, mensagem })
         });
-        
+
         if (!resposta.ok) throw new Error("Erro ao enviar");
-        
+
         form.reset();
         await carregarMensagens();
         alert("Mensagem enviada! Holograma apareceu na sala de controle.");
@@ -96,11 +96,11 @@ form.addEventListener("submit", async (event) => {
 
 botaoLimpar.addEventListener("click", async () => {
     if (!confirm("Deseja apagar todos os hologramas?")) return;
-    
+
     try {
         await fetch(API_URL, {
             method: "DELETE",
-            headers: HEADERS_BASE  // ← adicionado
+            headers: HEADERS_BASE
         });
         await carregarMensagens();
         alert("Todos os hologramas foram removidos.");
