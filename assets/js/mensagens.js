@@ -1,4 +1,13 @@
-const API_URL = "https://engulf-deafness-trouble.ngrok-free.dev";
+const API_URL = "https://engulf-deafness-trouble.ngrok-free.dev/mensagens";
+
+const HEADERS_BASE = {
+    "ngrok-skip-browser-warning": "true"
+};
+
+const HEADERS_JSON = {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true"
+};
 
 const form = document.getElementById("formMensagem");
 const listaMensagens = document.getElementById("listaMensagens");
@@ -6,7 +15,9 @@ const botaoLimpar = document.getElementById("limparMensagens");
 
 async function carregarMensagens() {
     try {
-        const resposta = await fetch(API_URL);
+        const resposta = await fetch(API_URL, {
+            headers: HEADERS_BASE  // ← adicionado
+        });
         if (!resposta.ok) throw new Error("Erro ao carregar mensagens");
         const mensagens = await resposta.json();
         mostrarMensagens(mensagens);
@@ -52,7 +63,6 @@ function escapeHtml(texto) {
         .replace(/"/g, "&quot;");
 }
 
-// Enviar nova mensagem
 form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -69,7 +79,7 @@ form.addEventListener("submit", async (event) => {
     try {
         const resposta = await fetch(API_URL, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: HEADERS_JSON,  // ← atualizado
             body: JSON.stringify({ nome, planeta, tipo, mensagem })
         });
         
@@ -84,12 +94,14 @@ form.addEventListener("submit", async (event) => {
     }
 });
 
-// Apagar todas
 botaoLimpar.addEventListener("click", async () => {
     if (!confirm("Deseja apagar todos os hologramas?")) return;
     
     try {
-        await fetch(API_URL, { method: "DELETE" });
+        await fetch(API_URL, {
+            method: "DELETE",
+            headers: HEADERS_BASE  // ← adicionado
+        });
         await carregarMensagens();
         alert("Todos os hologramas foram removidos.");
     } catch (erro) {
@@ -98,5 +110,4 @@ botaoLimpar.addEventListener("click", async () => {
     }
 });
 
-// Inicializar
 carregarMensagens();
