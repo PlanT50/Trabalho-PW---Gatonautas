@@ -57,3 +57,13 @@ margin-top: 10px;
     background-image: url(../imgs/battlestar-galactica_caprica.avif);
 }
 
+.mission-delegar{
+    display: none;
+
+}
+
+.mission-delegar.open{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
