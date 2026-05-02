@@ -1,17 +1,3 @@
-/* ============================================================
-   diario.js — Lógica do Diário de Bordo | Gaton IX
-   Tripulação oficial:
-     Capitã Amora (Comandante) | Tom Vega, Ziggy Stardust, Sushi Orion (Pilotos)
-     Pixel Garras, Astro Garfield, Cookie Saturno, Nox Eclipse (Engenheiros)
-     Luna Nebulosa, Mika Andrômeda, Lyra Miau, Tico Lunar (Cientistas)
-     Nina Cosmos, Bento Meteoro, Mel Quasar (Médicos)
-   ============================================================ */
-
-// ---- Entradas fixas ----------------------------------------
-// imagem: "nasa"  → busca automaticamente na NASA APOD API
-// imagem: "cat"   → busca automaticamente na Cat API
-// imagem: ""      → sem imagem (você coloca a URL manualmente)
-
 const ENTRADAS_FIXAS = [
 
     // ── MISSÕES ──────────────────────────────────────────────
@@ -94,22 +80,13 @@ const ENTRADAS_FIXAS = [
 
     // ── INCIDENTES ───────────────────────────────────────────
     {
-        id: "f3",
-        titulo: "A Grande Soneca Técnica de Astro Garfield",
-        data: "2025-02-18",
-        categoria: "incidente",
-        autor: "Tom Vega",
-        texto: "Astro Garfield adormeceu sobre o painel de controle durante o turno da madrugada — exatamente como faz todos os turnos. A nave ficou em órbita por 6 horas em torno de um buraco de minhoca enquanto Tom Vega tentava acordá-lo. Mel Quasar sugeriu petiscos. Funcionou. Painel danificado. Nox Eclipse consertou no escuro.",
-        imagem: ""
-    },
-    {
         id: "f10",
         titulo: "Sushi Orion pousa no asteroide errado",
         data: "2025-03-22",
         categoria: "incidente",
         autor: "Capitã Amora",
         texto: "Sushi Orion, pilotando com música espacial no volume máximo, confundiu o asteroide de pouso autorizado com um vizinho proibido — o mesmo onde Ziggy Stardust já havia estacionado ilegalmente em 2024. Bento Meteoro tratou o susto da tripulação. Ziggy Stardust achou graça. Relatório enviado à base com duas páginas de desculpas.",
-        imagem: ""
+        imagem: "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2015/06/hera_networking_with_cubesats/15477210-17-eng-GB/Hera_networking_with_CubeSats_pillars.jpg"
     },
     {
         id: "f11",
@@ -118,7 +95,7 @@ const ENTRADAS_FIXAS = [
         categoria: "incidente",
         autor: "Luna Nebulosa",
         texto: "Ninguém sabe de onde vieram, mas passamos por um campo de meteoritos de pelúcia sintética cor-de-rosa. O sistema de filtragem entupiu com fiapos. Nina Cosmos atendeu 8 casos de espirro consecutivo. Tico Lunar tentou catalogar os fragmentos como nova espécie mineral. Luna Nebulosa catalogou como 'evento inexplicável classe F'.",
-        imagem: ""
+        imagem: "https://images8.alphacoders.com/690/690814.jpg"
     },
     {
         id: "f12",
@@ -127,12 +104,21 @@ const ENTRADAS_FIXAS = [
         categoria: "incidente",
         autor: "Mel Quasar",
         texto: "A tripulação entrou em greve após Mel Quasar informar que o estoque de atum havia sido substituído por 'proteína de asteróide liofilizada'. Capitã Amora negociou por 6 horas. Ziggy Stardust fez piquete na entrada da cozinha. Acordo final: reabastecimento emergencial em Felinópolis Prime. Atum voltou ao manifesto de carga.",
-        imagem: ""
-    }
+        imagem: "https://www.naylor.com/associationadviser/wp-content/uploads/sites/2/2020/08/Cats-on-Protest-Sign.jpg"
+    },
+    {
+        id: "f3",
+        titulo: "A Grande Soneca Técnica de Astro Garfield",
+        data: "2025-02-18",
+        categoria: "incidente",
+        autor: "Tom Vega",
+        texto: "Astro Garfield adormeceu sobre o painel de controle durante o turno da madrugada — exatamente como faz todos os turnos. A nave ficou em órbita por 6 horas em torno de um buraco de minhoca enquanto Tom Vega tentava acordá-lo. Mel Quasar sugeriu petiscos. Funcionou. Painel danificado. Nox Eclipse consertou no escuro.",
+        imagem: "https://www.shutterstock.com/image-photo/cat-sleep-on-keyboard-260nw-26466448.jpg"
+    },
 ];
 
 // ---- APIs --------------------------------------------------
-const NASA_KEY = "DEMO_KEY";
+const NASA_KEY = "EIauP0dXfnLMGBdcZ34IcdjHrkGxNR0vjINvp40t"; //chave da api da nasa, só fiz login e pegguei a chave
 
 async function buscarImagensNASA(quantidade) {
     try {
