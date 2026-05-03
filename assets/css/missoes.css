@@ -22,6 +22,7 @@
     height: 300px;
     background-size: cover;
     background-position: center;
+    box-shadow: 0 0 50px rgba(75, 198, 255, 0.09);
 }
 
 
@@ -62,7 +63,6 @@ margin-top: 10px;
     position: fixed;
     inset: 0;
     z-index: 200;
-    background: rgba(0, 0, 0, 0,7);
 
 }
 
