@@ -4,10 +4,24 @@ const crew = document.getElementById("Crew");
 
 function openMissionPanel(planet) {
     missionPlanet.textContent = `Missão escolhida: ${planet}`;
+    mostrarGatos();
 
   missionDelegar.classList.add("open");
   missionDelegar.setAttribute("aria-hidden", "false");
 }
+
+function mostrarGatos() {
+  crew.innerHTML = "";
+
+  gatos.forEach(gato => {
+    crew.innerHTML += `
+      <button class="btn btn-secondary cat-option" type="button">
+        ${gato}
+      </button>
+    `;
+  });
+}
+
 
 document.querySelectorAll(".mission-open").forEach(button => {
   button.addEventListener("click", () => {

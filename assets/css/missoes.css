@@ -83,3 +83,13 @@ margin-top: 10px;
   box-shadow: 0 0 28px rgba(75, 198, 255, 0.09);
 }
 
+#close-mission{
+    color: antiquewhite;
+    margin-left: auto;
+}
+
+.mission-header{
+    display: flex;
+    align-items: center;
+}
+
