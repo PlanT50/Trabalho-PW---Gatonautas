@@ -16,7 +16,7 @@ function closeMissionPanel(){
     missionDelegar.setAttribute("aria-hidden", "true");
 }
 
-closeMission.addEventListener("Click", closeMissionPanel);
+closeMission.addEventListener("click", closeMissionPanel);
 
 function mostrarGatos() {
   crew.innerHTML = "";
