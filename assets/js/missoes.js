@@ -1,6 +1,7 @@
 const missionDelegar = document.getElementById("mission-delegar");
 const missionPlanet = document.getElementById("mission-Planet");
 const crew = document.getElementById("Crew");
+const closeMission = document.getElementById("close-mission");
 
 function openMissionPanel(planet) {
     missionPlanet.textContent = `Missão escolhida: ${planet}`;
@@ -9,6 +10,13 @@ function openMissionPanel(planet) {
   missionDelegar.classList.add("open");
   missionDelegar.setAttribute("aria-hidden", "false");
 }
+
+function closeMissionPanel(){
+    missionDelegar.classList.remove("open")
+    missionDelegar.setAttribute("aria-hidden", "true");
+}
+
+closeMission.addEventListener("Click", closeMissionPanel);
 
 function mostrarGatos() {
   crew.innerHTML = "";
