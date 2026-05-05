@@ -1,4 +1,4 @@
-const CAT_API_KEY = "live_BqE3szB3Y25YlvaRqbT2gsfzbtmwyI9fmhlJeahTLxluQZvxeZ2JiWptYGLXPoUm";
+const CAT_API_KEY = "SUA_CHAVE_AQUI";
 
 const funcaoDesc = {
   Comandante: "Gatinho líder, adora atenção e manda em todo mundo",
@@ -366,6 +366,20 @@ function openModal(member) {
   document.getElementById("modalTags").innerHTML = member.skills
     .map(skill => `<span class="tag">${skill}</span>`)
     .join("");
+
+  // botão adotar
+  const modalFooter = document.getElementById("modalFooter");
+  if (member.status === "Disponível") {
+    modalFooter.innerHTML = `
+      <a href="Voluntariado.html" class="btn btn-primary modal__adopt-btn">
+        🐾 Adotar este tripulante
+      </a>
+    `;
+  } else {
+    modalFooter.innerHTML = `
+      <p class="modal__adopted-msg">✓ Este tripulante já encontrou seu lar</p>
+    `;
+  }
 
   document.getElementById("modalOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
