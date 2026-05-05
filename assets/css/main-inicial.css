@@ -87,7 +87,7 @@
 
 .sobre__card-title {
     font-family: var(--font-title);
-    font-size: 1rem;
+    font-size: 1.1rem;
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--purple-3);
@@ -96,7 +96,7 @@
 .sobre__card-text {
     color: var(--text-soft);
     line-height: 1.7;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
 }
 
 .sobre__stats {
