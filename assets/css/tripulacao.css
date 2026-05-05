@@ -234,7 +234,6 @@
     color: var(--blue-1);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    margin-bottom: 1rem;
 }
 
 .crew-card__role-desc {
