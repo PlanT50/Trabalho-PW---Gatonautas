@@ -9,8 +9,8 @@
     border: solid 1px;
     border-color: rgb(75, 75, 75);
     border-radius: 15px;
-
 }
+
 .home-cat-box {
     display: grid;
     grid-template-columns: 1.05fr 1fr;
@@ -21,7 +21,6 @@
     display: flex;
     gap: 16px;
     margin-top: 20px;
-
 }
 
 .home-cat__title {
@@ -29,7 +28,7 @@
     background: linear-gradient(to bottom, #ffffff 0%, #d9c2ff 45%, #6b4dff 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    color: transparent
+    color: transparent;
 }
 
 .home-cat__media {
@@ -37,4 +36,133 @@
   opacity: 0.75;
   -webkit-mask-image: radial-gradient(circle, black 25%, transparent 76%);
   mask-image: radial-gradient(circle, black 25%, transparent 76%);
+}
+
+/* SOBRE A ONG */
+.sobre {
+    margin-top: 32px;
+}
+
+.sobre__header {
+    text-align: center;
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.sobre__title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.sobre__intro {
+    max-width: 640px;
+    text-align: center;
+}
+
+.sobre__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.sobre__card {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.sobre__card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow);
+}
+
+.sobre__card-icon {
+    font-size: 2rem;
+}
+
+.sobre__card-title {
+    font-family: var(--font-title);
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--purple-3);
+}
+
+.sobre__card-text {
+    color: var(--text-soft);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+.sobre__stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(18, 24, 58, 0.92), rgba(9, 13, 34, 0.96));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 40px 32px;
+    box-shadow: var(--shadow-soft);
+}
+
+.sobre__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    flex: 1;
+    text-align: center;
+}
+
+.sobre__stat-num {
+    font-family: var(--font-title);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--purple-2), var(--blue-1));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.sobre__stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.sobre__stat-divider {
+    width: 1px;
+    height: 56px;
+    background: var(--line);
+    flex-shrink: 0;
+}
+
+/* RESPONSIVO*/
+@media (max-width: 900px) {
+    .home-cat-box {
+        grid-template-columns: 1fr;
+    }
+
+    .home-cat__media {
+        display: none;
+    }
+
+    .sobre__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sobre__stats {
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+
+    .sobre__stat-divider {
+        display: none;
+    }
 }
