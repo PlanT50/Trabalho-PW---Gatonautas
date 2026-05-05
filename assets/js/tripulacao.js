@@ -1,3 +1,5 @@
+const CAT_API_KEY = "SUA_CHAVE_AQUI";
+
 const funcaoDesc = {
   Comandante: "Gatinho líder, adora atenção e manda em todo mundo",
   Piloto: "Agitado, curioso e foge de tudo",
@@ -219,13 +221,37 @@ const tripulantes = [
   }
 ];
 
-let allCrew = tripulantes;
+let allCrew = [];
 let activeFilter = "all";
 
-// ==========================
-// CRIAR CARD RESUMIDO
-// ==========================
+// buscar fotos da cat api
+async function fetchCatImages(quantidade) {
+  try {
+    const response = await fetch(
+      `https://api.thecatapi.com/v1/images/search?limit=${quantidade}&has_breeds=1`,
+      { headers: { "x-api-key": CAT_API_KEY } }
+    );
+    const data = await response.json();
+    return data.map(cat => cat.url);
+  } catch (error) {
+    console.error("erro ao buscar imagens:", error);
+    return [];
+  }
+}
 
+// iniciar página
+async function init() {
+  const catImgs = await fetchCatImages(tripulantes.length);
+
+  allCrew = tripulantes.map((member, index) => ({
+    ...member,
+    img: catImgs[index] || member.img
+  }));
+
+  renderGrid(allCrew);
+}
+
+// criar card
 function renderCard(member, delay) {
   const card = document.createElement("div");
 
@@ -254,16 +280,11 @@ function renderCard(member, delay) {
 
     <div class="crew-card__body">
       <p class="crew-card__id">${member.id}</p>
-
       <h3 class="crew-card__name">${member.nome}</h3>
-
       <p class="crew-card__role">${member.funcao}</p>
       <p class="crew-card__role-desc">${funcaoDesc[member.funcao]}</p>
-
       <div class="crew-card__divider"></div>
-
       <p class="crew-card__quirk">${member.resumo}</p>
-
       <div class="crew-card__tags">
         ${member.skills
           .slice(0, 2)
@@ -278,10 +299,7 @@ function renderCard(member, delay) {
   return card;
 }
 
-// ==========================
-// MOSTRAR CARDS NA TELA
-// ==========================
-
+// renderizar grid
 function renderGrid(crew) {
   const grid = document.getElementById("tripExib");
   const countEl = document.getElementById("tripQnt");
@@ -313,10 +331,7 @@ function renderGrid(crew) {
   });
 }
 
-// ==========================
-// ABRIR MODAL DETALHADO
-// ==========================
-
+// abrir modal
 function openModal(member) {
   document.getElementById("modalImg").src = member.img;
   document.getElementById("modalImg").alt = "Foto de " + member.nome;
@@ -330,17 +345,14 @@ function openModal(member) {
       <div class="stat__label">Idade</div>
       <div class="stat__val">${member.idade} anos</div>
     </div>
-
     <div class="stat">
       <div class="stat__label">Energia</div>
       <div class="stat__val">⭐ ${member.energia}</div>
     </div>
-
     <div class="stat">
       <div class="stat__label">No abrigo há</div>
       <div class="stat__val stat__val--small">${member.tempoAbrigo} ${member.tempoAbrigo === 1 ? "mês" : "meses"}</div>
     </div>
-
     <div class="stat">
       <div class="stat__label">Resgatado em</div>
       <div class="stat__val stat__val--small">${member.origem}</div>
@@ -359,10 +371,7 @@ function openModal(member) {
   document.body.style.overflow = "hidden";
 }
 
-// ==========================
-// FECHAR MODAL
-// ==========================
-
+// fechar modal
 function closeModal() {
   document.getElementById("modalOverlay").classList.remove("open");
   document.body.style.overflow = "";
@@ -371,21 +380,14 @@ function closeModal() {
 document.getElementById("modalClose").addEventListener("click", closeModal);
 
 document.getElementById("modalOverlay").addEventListener("click", event => {
-  if (event.target.id === "modalOverlay") {
-    closeModal();
-  }
+  if (event.target.id === "modalOverlay") closeModal();
 });
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeModal();
-  }
+  if (event.key === "Escape") closeModal();
 });
 
-// ==========================
-// FILTROS
-// ==========================
-
+// filtros
 document.getElementById("filterBar").addEventListener("click", event => {
   const button = event.target.closest(".filter-btn");
 
@@ -396,14 +398,8 @@ document.getElementById("filterBar").addEventListener("click", event => {
   });
 
   button.classList.add("active");
-
   activeFilter = button.dataset.filter;
-
   renderGrid(allCrew);
 });
 
-// ==========================
-// INICIAR PÁGINA
-// ==========================
-
-renderGrid(allCrew);
+init();
