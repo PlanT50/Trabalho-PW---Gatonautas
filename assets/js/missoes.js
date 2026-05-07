@@ -35,11 +35,17 @@ function mostrarGatos() {
  document.querySelectorAll(".cat-option").forEach(button =>{
   button.addEventListener("click", () => {
     const gatoEscolhido = button.dataset.gato;
-    missionDelegar(gatoEscolhido);
+    delegarMissao(gatoEscolhido);
   })
  })
 
  
+}
+
+function delegarMissao(gato){
+  const tempoEmSegundos = 60;
+
+  alert(`${gato} foi enviado para ${planetaEscolhido} por ${tempoEmSegundos} segundos!`);
 }
 
 
