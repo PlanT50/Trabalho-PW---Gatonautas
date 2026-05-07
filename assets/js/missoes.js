@@ -2,10 +2,12 @@ const missionDelegar = document.getElementById("mission-delegar");
 const missionPlanet = document.getElementById("mission-Planet");
 const crew = document.getElementById("Crew");
 const closeMission = document.getElementById("close-mission");
+let planetaEscolhido = "";
 
 function openMissionPanel(planet) {
     missionPlanet.textContent = `Missão escolhida: ${planet}`;
     mostrarGatos();
+    planetaEscolhido = planet;
 
   missionDelegar.classList.add("open");
   missionDelegar.setAttribute("aria-hidden", "false");
@@ -28,6 +30,16 @@ function mostrarGatos() {
       </button>
     `;
   });
+
+
+ document.querySelectorAll(".cat-option").forEach(button =>{
+  button.addEventListener("click", () => {
+    const gatoEscolhido = button.dataset.gato;
+    missionDelegar(gatoEscolhido);
+  })
+ })
+
+ 
 }
 
 
