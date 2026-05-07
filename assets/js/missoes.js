@@ -2,7 +2,7 @@ const missionDelegar = document.getElementById("mission-delegar");
 const missionPlanet = document.getElementById("mission-Planet");
 const crew = document.getElementById("Crew");
 const closeMission = document.getElementById("close-mission");
-let planetaEscolhido = "";
+let planetaEscolhido = planet;
 
 function openMissionPanel(planet) {
     missionPlanet.textContent = `Missão escolhida: ${planet}`;
@@ -25,7 +25,7 @@ function mostrarGatos() {
 
   gatos.forEach(gato => {
     crew.innerHTML += `
-      <button class="btn btn-secondary cat-option" type="button">
+      <button class="btn btn-secondary cat-option" type="button" data-gato="${gato}">
         ${gato}
       </button>
     `;
