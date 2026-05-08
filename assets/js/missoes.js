@@ -1,75 +1,79 @@
-const missionDelegar = document.getElementById("mission-delegar");
-const missionPlanet = document.getElementById("mission-Planet");
-const crew = document.getElementById("Crew");
-const closeMission = document.getElementById("close-mission");
-let planetaEscolhido = planet;
+const gatos = [
+  "Luna Nebulosa",
+  "Pixel Garras",
+  "Tom Vega",
+  "Mika Andrômeda",
+  "Nina Cosmos",
+  "Ziggy Stardust",
+  "Astro Garfield",
+  "Lyra Miau",
+  "Bento Meteoro",
+  "Capitã Amora",
+  "Cookie Saturno",
+  "Sushi Orion",
+  "Mel Quasar",
+  "Tico Lunar",
+  "Nox Eclipse"
+];
 
-function openMissionPanel(planet) {
-    missionPlanet.textContent = `Missão escolhida: ${planet}`;
-    mostrarGatos();
-    planetaEscolhido = planet;
+const citySelector = document.getElementById("city-selector");
+const selectedCity = document.getElementById("selected-city");
+const crewOptions = document.getElementById("crew-options");
+const closeCity = document.getElementById("close-city");
+let cidadeEscolhida = "";
 
-  missionDelegar.classList.add("open");
-  missionDelegar.setAttribute("aria-hidden", "false");
+function openCityPanel(cidade) {
+  cidadeEscolhida = cidade;
+  selectedCity.textContent = `Cidade escolhida: ${cidade}`;
+  showCats();
+
+  citySelector.classList.add("open");
+  citySelector.setAttribute("aria-hidden", "false");
 }
 
-function closeMissionPanel(){
-    missionDelegar.classList.remove("open")
-    missionDelegar.setAttribute("aria-hidden", "true");
+function closeCityPanel() {
+  citySelector.classList.remove("open");
+  citySelector.setAttribute("aria-hidden", "true");
 }
 
-closeMission.addEventListener("click", closeMissionPanel);
-
-function mostrarGatos() {
-  crew.innerHTML = "";
-
-  gatos.forEach(gato => {
-    crew.innerHTML += `
+function showCats() {
+  crewOptions.innerHTML = gatos
+    .map(gato => `
       <button class="btn btn-secondary cat-option" type="button" data-gato="${gato}">
         ${gato}
       </button>
-    `;
+    `)
+    .join("");
+
+  document.querySelectorAll(".cat-option").forEach(button => {
+    button.addEventListener("click", () => {
+      sendCatToCity(button.dataset.gato);
+    });
   });
-
-
- document.querySelectorAll(".cat-option").forEach(button =>{
-  button.addEventListener("click", () => {
-    const gatoEscolhido = button.dataset.gato;
-    delegarMissao(gatoEscolhido);
-  })
- })
-
- 
 }
 
-function delegarMissao(gato){
+function sendCatToCity(gato) {
   const tempoEmSegundos = 60;
 
-  alert(`${gato} foi enviado para ${planetaEscolhido} por ${tempoEmSegundos} segundos!`);
+  alert(`${gato} foi enviado para ${cidadeEscolhida} por ${tempoEmSegundos} segundos!`);
 }
 
-
-document.querySelectorAll(".mission-open").forEach(button => {
+document.querySelectorAll(".city-open").forEach(button => {
   button.addEventListener("click", () => {
-    const planet = button.dataset.planet;
-    openMissionPanel(planet);
+    openCityPanel(button.dataset.city);
   });
 });
 
-const gatos = [
-    "Luna Nebulosa",
-    "Pixel Garras",
-    "Tom Vega",
-    "Mika Andrômeda",
-    "Nina Cosmos",
-    "Ziggy Stardust",
-    "Astro Garfield",
-    "Lyra Miau",
-    "Bento Meteoro",
-    "Capitã Amora",
-    "Cookie Saturno",
-    "Sushi Orion",
-    "Mel Quasar",
-    "Tico Lunar",
-    "Nox Eclipse"
-]
+closeCity.addEventListener("click", closeCityPanel);
+
+citySelector.addEventListener("click", event => {
+  if (event.target === citySelector) {
+    closeCityPanel();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape" && citySelector.classList.contains("open")) {
+    closeCityPanel();
+  }
+});

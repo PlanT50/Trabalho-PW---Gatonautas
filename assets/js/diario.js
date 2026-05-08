@@ -16,7 +16,7 @@ const ENTRADAS_FIXAS = [
         data: "2025-04-20",
         categoria: "missao",
         autor: "Capitã Amora",
-        texto: "Missão cumprida. O sistema de Purr-Alpha estava em colapso gravitacional emocional. Luna Nebulosa plantou arranhadores solares em cada continente, Mika Andrômeda analisou os dados e Nox Eclipse fez os reparos no escuro — por escolha própria. Em 72 horas, os planetas recuperaram cor e disposição.",
+        texto: "Missão cumprida. A cidade de Purr-Alpha estava em colapso gravitacional emocional. Luna Nebulosa plantou arranhadores solares em cada praça, Mika Andrômeda analisou os dados e Nox Eclipse fez os reparos no escuro — por escolha própria. Em 72 horas, os bairros recuperaram cor e disposição.",
         imagem: "nasa"
     },
     {
@@ -32,18 +32,18 @@ const ENTRADAS_FIXAS = [
     // ── PLANETAS ─────────────────────────────────────────────
     {
         id: "f2",
-        titulo: "Primeiro planeta visitado: Miaulon-7",
+        titulo: "Primeira cidade visitada: Miaulon-7",
         data: "2025-02-03",
-        categoria: "planeta",
+        categoria: "cidade",
         autor: "Luna Nebulosa",
-        texto: "Miaulon-7 estava completamente abandonado e cinzento. Luna Nebulosa distribuiu mudas de plantas alienígenas e Lyra Miau mapeou as constelações locais — nomeando uma delas em homenagem ao próprio rabo. Os habitantes locais adotaram Pixel Garras como divindade por ter consertado o gerador em 10 minutos.",
+        texto: "Miaulon-7 estava completamente abandonada e cinzenta. Luna Nebulosa distribuiu mudas de plantas alienígenas e Lyra Miau mapeou as constelações locais — nomeando uma delas em homenagem ao próprio rabo. Os moradores adotaram Pixel Garras como herói oficial por ter consertado o gerador em 10 minutos.",
         imagem: "nasa"
     },
     {
         id: "f7",
-        titulo: "Planeta Ronronix: o mundo que ronrona",
+        titulo: "Ronronix: a cidade que ronrona",
         data: "2025-03-14",
-        categoria: "planeta",
+        categoria: "cidade",
         autor: "Mika Andrômeda",
         texto: "Descoberta histórica registrada por Mika Andrômeda: Ronronix emite frequências de ronron naturalmente pelo núcleo. A tripulação inteira dormiu por 11 horas na primeira noite. Bento Meteoro declarou o sono 'tecnicamente terapêutico'. Capitã Amora chamou de 'soneca tática' e incluiu no relatório oficial.",
         imagem: "nasa"
@@ -52,7 +52,7 @@ const ENTRADAS_FIXAS = [
         id: "f8",
         titulo: "Lua de Gelo de Felinópolis Prime",
         data: "2025-06-01",
-        categoria: "planeta",
+        categoria: "cidade",
         autor: "Tico Lunar",
         texto: "A lua glacial de Felinópolis Prime tem temperatura de -180°C. Tico Lunar tentou catalogar os cristais de gelo como 'artefatos alienígenas brilhantes'. Nina Cosmos aplicou aquecedor térmico em toda a equipe antes de sair. O gelo, analisado por Mika Andrômeda, sabe inexplicavelmente a atum.",
         imagem: "nasa"
@@ -195,7 +195,7 @@ function salvarEntradasUsuario(entradas) {
 const LABELS = {
     missao: "Missão",
     tripulacao: "Tripulação",
-    planeta: "Planeta",
+    cidade: "Cidade",
     incidente: "Incidente"
 };
 

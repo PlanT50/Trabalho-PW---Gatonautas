@@ -237,7 +237,7 @@
 /* Borda colorida por categoria */
 .diario-card[data-categoria="missao"]     { border-left: 4px solid var(--blue-1); }
 .diario-card[data-categoria="tripulacao"] { border-left: 4px solid var(--purple-3); }
-.diario-card[data-categoria="planeta"]   { border-left: 4px solid #34d399; }
+.diario-card[data-categoria="cidade"]    { border-left: 4px solid #34d399; }
 .diario-card[data-categoria="incidente"] { border-left: 4px solid var(--gold-1); }
 
 /* Header do card */
@@ -282,7 +282,7 @@
 /* Badge por categoria */
 .diario-card[data-categoria="missao"]     .diario-card__badge { background: rgba(77,184,255,0.15); color: var(--blue-1); }
 .diario-card[data-categoria="tripulacao"] .diario-card__badge { background: rgba(192,139,255,0.15); color: var(--purple-3); }
-.diario-card[data-categoria="planeta"]   .diario-card__badge { background: rgba(52,211,153,0.15); color: #34d399; }
+.diario-card[data-categoria="cidade"]    .diario-card__badge { background: rgba(52,211,153,0.15); color: #34d399; }
 .diario-card[data-categoria="incidente"] .diario-card__badge { background: rgba(214,163,79,0.15); color: var(--gold-1); }
 
 .diario-card__autor {
