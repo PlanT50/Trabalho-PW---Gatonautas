@@ -1,30 +1,27 @@
 .diario-hero {
-    padding: 4rem 0 3rem;
-    text-align: center;
-    position: relative;
+    padding: 3rem 0 2rem;
 }
 
-.diario-hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(600px, 90vw);
-    height: 400px;
-    background: radial-gradient(ellipse at center, rgba(107, 77, 255, 0.22) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
+.diario-hero__box {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 50px;
+    align-items: center;
 }
 
-.diario-hero .container {
-    position: relative;
-    z-index: 1;
+.diario-hero__content {
+    text-align: left;
 }
 
-.diario-hero .container {
-    position: relative;
-    z-index: 1;
+.diario-hero__media {
+    width: 100%;
+    opacity: 0.75;
+    -webkit-mask-image: radial-gradient(circle, black 25%, transparent 76%);
+    mask-image: radial-gradient(circle, black 25%, transparent 76%);
+}
+.diario-hero__media img {
+    width: 100%;
+    display: block;
 }
 
 .diario-tag {
@@ -38,7 +35,7 @@
 
 .diario-title {
     margin-bottom: 1.2rem;
-    font-size: clamp(2.4rem, 7vw, 5rem);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     background: linear-gradient(to bottom, #ffffff 0%, #d9c2ff 45%, #6b4dff 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -50,17 +47,34 @@
     width: 60px;
     height: 2px;
     background: linear-gradient(to right, var(--purple-2), var(--blue-1));
-    margin: 0 auto 1.5rem;
+    margin-bottom: 1.5rem;
     border-radius: 999px;
 }
 
 .diario-subtitle {
     max-width: 620px;
-    margin: 0 auto;
+    color: var(--text-soft);
     font-size: clamp(1rem, 2vw, 1.3rem);
     font-weight: 700;
-    color: var(--text-soft);
     line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+    .diario-hero__box {
+        grid-template-columns: 1fr;
+    }
+ 
+    .diario-hero__content {
+        text-align: center;
+    }
+ 
+    .diario-hero__media {
+        display: none;
+    }
+ 
+    .diario-hero__divider {
+        margin: 0 auto 1.5rem;
+    }
 }
 
 /* Filtros */
