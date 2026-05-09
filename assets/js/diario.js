@@ -1,3 +1,11 @@
+const DIARIO_API_URL = "https://engulf-deafness-trouble.ngrok-free.dev/diario";
+
+const HEADERS_BASE = { "ngrok-skip-browser-warning": "true" };
+const HEADERS_JSON = {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true"
+};
+
 const ENTRADAS_FIXAS = [
 
     // ── MISSÕES ──────────────────────────────────────────────
@@ -118,7 +126,7 @@ const ENTRADAS_FIXAS = [
 ];
 
 // ---- APIs --------------------------------------------------
-const NASA_KEY = "EIauP0dXfnLMGBdcZ34IcdjHrkGxNR0vjINvp40t"; //chave da api da nasa, só fiz login e pegguei a chave
+const NASA_KEY = "EIauP0dXfnLMGBdcZ34IcdjHrkGxNR0vjINvp40t";
 
 async function buscarImagensNASA(quantidade) {
     try {
@@ -148,7 +156,6 @@ async function buscarImagensGato(quantidade) {
     }
 }
 
-// ---- Injeção de imagens nas entradas -----------------------
 async function resolverImagens(entradas) {
     const indicesNasa = entradas
         .map((e, i) => e.imagem === "nasa" ? i : -1)
@@ -166,29 +173,41 @@ async function resolverImagens(entradas) {
     let iNasa = 0, iCat = 0;
 
     return entradas.map(entrada => {
-        if (entrada.imagem === "nasa") {
-            return { ...entrada, imagem: urlsNasa[iNasa++] || "" };
-        }
-        if (entrada.imagem === "cat") {
-            return { ...entrada, imagem: urlsCat[iCat++] || "" };
-        }
+        if (entrada.imagem === "nasa") return { ...entrada, imagem: urlsNasa[iNasa++] || "" };
+        if (entrada.imagem === "cat")  return { ...entrada, imagem: urlsCat[iCat++]   || "" };
         return entrada;
     });
 }
 
-// ---- Estado ------------------------------------------------
-const STORAGE_KEY = "gatanix_diario_entradas";
-
-function carregarEntradasUsuario() {
+// ---- API do diário -----------------------------------------
+async function carregarEntradasAPI() {
     try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-    } catch {
+        const res = await fetch(DIARIO_API_URL, { headers: HEADERS_BASE });
+        if (!res.ok) throw new Error("Erro ao carregar entradas");
+        const entradas = await res.json();
+        return entradas.map(e => ({ ...e, fromAPI: true }));
+    } catch (e) {
+        console.warn("API do diário indisponível:", e);
         return [];
     }
 }
 
-function salvarEntradasUsuario(entradas) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(entradas));
+async function salvarEntradaAPI(dados) {
+    const res = await fetch(DIARIO_API_URL, {
+        method: "POST",
+        headers: HEADERS_JSON,
+        body: JSON.stringify(dados)
+    });
+    if (!res.ok) throw new Error("Erro ao salvar entrada");
+    return res.json();
+}
+
+async function deletarEntradaAPI(id) {
+    const res = await fetch(`${DIARIO_API_URL}/${id}`, {
+        method: "DELETE",
+        headers: HEADERS_BASE
+    });
+    if (!res.ok) throw new Error("Erro ao remover entrada");
 }
 
 // ---- Utilitários -------------------------------------------
@@ -224,6 +243,9 @@ function criarCard(entrada, deletavel = false) {
             <div class="diario-card__meta">
                 <span class="diario-card__badge">${label}</span>
                 <span class="diario-card__data">${formatarData(entrada.data)}</span>
+                ${entrada.status && entrada.status !== "publicado"
+                    ? `<span class="diario-card__badge" style="background:#555">${entrada.status}</span>`
+                    : ""}
             </div>
         </div>
 
@@ -245,12 +267,11 @@ function criarCard(entrada, deletavel = false) {
 
 let ENTRADAS_RESOLVIDAS = [];
 
-function renderizarTimeline(filtro = "all") {
+function renderizarTimeline(entradasAPI, filtro = "all") {
     const timeline = document.getElementById("timeline");
     const vazio    = document.getElementById("diarioVazio");
-    const usuario  = carregarEntradasUsuario();
 
-    const todas = [...ENTRADAS_RESOLVIDAS, ...usuario].sort((a, b) =>
+    const todas = [...ENTRADAS_RESOLVIDAS, ...entradasAPI].sort((a, b) =>
         new Date(b.data) - new Date(a.data)
     );
 
@@ -268,25 +289,34 @@ function renderizarTimeline(filtro = "all") {
     vazio.hidden = true;
 
     filtradas.forEach(entrada => {
-        const deletavel = usuario.some(u => u.id === entrada.id);
-        timeline.appendChild(criarCard(entrada, deletavel));
+        timeline.appendChild(criarCard(entrada, !!entrada.fromAPI));
     });
 }
 
-function removerEntrada(id) {
-    const usuario = carregarEntradasUsuario().filter(e => e.id !== id);
-    salvarEntradasUsuario(usuario);
+async function recarregarTimeline() {
     const filtroAtivo = document.querySelector(".filter-btn.active")?.dataset.filter || "all";
-    renderizarTimeline(filtroAtivo);
+    const entradasAPI = await carregarEntradasAPI();
+    renderizarTimeline(entradasAPI, filtroAtivo);
+}
+
+async function removerEntrada(id) {
+    try {
+        await deletarEntradaAPI(id);
+        await recarregarTimeline();
+    } catch (e) {
+        console.error(e);
+        alert("Não foi possível remover a entrada.");
+    }
 }
 
 // ---- Filtros -----------------------------------------------
 function initFiltros() {
     document.querySelectorAll(".filter-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
+        btn.addEventListener("click", async () => {
             document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
             btn.classList.add("active");
-            renderizarTimeline(btn.dataset.filter);
+            const entradasAPI = await carregarEntradasAPI();
+            renderizarTimeline(entradasAPI, btn.dataset.filter);
         });
     });
 }
@@ -310,46 +340,56 @@ function initFormulario() {
         limparForm();
     });
 
-    salvarBtn.addEventListener("click", () => {
+    salvarBtn.addEventListener("click", async () => {
         const titulo    = document.getElementById("entradaTitulo").value.trim();
         const data      = document.getElementById("entradaData").value;
         const categoria = document.getElementById("entradaCategoria").value;
         const autor     = document.getElementById("entradaAutor").value.trim();
         const texto     = document.getElementById("entradaTexto").value.trim();
         const imagem    = document.getElementById("entradaImagem").value.trim();
+        const status    = document.getElementById("entradaStatus").value;
 
         if (!titulo || !data || !categoria || !texto) {
             alert("Preencha os campos obrigatórios: título, data, categoria e relato.");
             return;
         }
 
-        const nova = {
-            id: "u_" + Date.now(),
-            titulo,
-            data,
-            categoria,
-            autor: autor || "Tripulante Anônimo",
-            texto,
-            imagem
-        };
+        salvarBtn.disabled = true;
+        salvarBtn.textContent = "Transmitindo...";
 
-        const usuario = carregarEntradasUsuario();
-        usuario.push(nova);
-        salvarEntradasUsuario(usuario);
+        try {
+            await salvarEntradaAPI({
+                titulo,
+                data,
+                categoria,
+                autor: autor || "Tripulante Anônimo",
+                texto,
+                imagem,
+                status
+            });
 
-        limparForm();
-        formBox.hidden = true;
-        toggleBtn.setAttribute("aria-expanded", "false");
+            limparForm();
+            formBox.hidden = true;
+            toggleBtn.setAttribute("aria-expanded", "false");
 
-        document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
-        document.querySelector(".filter-btn[data-filter='all']").classList.add("active");
-        renderizarTimeline("all");
+            document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+            document.querySelector(".filter-btn[data-filter='all']").classList.add("active");
+
+            await recarregarTimeline();
+        } catch (e) {
+            console.error(e);
+            alert("Falha ao transmitir log. Verifique se a API está rodando.");
+        } finally {
+            salvarBtn.disabled = false;
+            salvarBtn.innerHTML = '<i class="fa-solid fa-satellite-dish"></i> Transmitir log';
+        }
     });
 }
 
 function limparForm() {
-    ["entradaTitulo","entradaData","entradaCategoria","entradaAutor","entradaTexto","entradaImagem"]
+    ["entradaTitulo", "entradaData", "entradaCategoria", "entradaAutor", "entradaTexto", "entradaImagem"]
         .forEach(id => { document.getElementById(id).value = ""; });
+    document.getElementById("entradaStatus").value = "publicado";
 }
 
 // ---- Loading -----------------------------------------------
@@ -369,7 +409,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     initFormulario();
     mostrarLoading();
 
-    ENTRADAS_RESOLVIDAS = await resolverImagens(ENTRADAS_FIXAS);
+    const [entradasResolvidas, entradasAPI] = await Promise.all([
+        resolverImagens(ENTRADAS_FIXAS),
+        carregarEntradasAPI()
+    ]);
 
-    renderizarTimeline("all");
+    ENTRADAS_RESOLVIDAS = entradasResolvidas;
+    renderizarTimeline(entradasAPI, "all");
 });
