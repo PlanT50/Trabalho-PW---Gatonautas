@@ -3,52 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <title>Mensagens</title>
-
         <link rel="stylesheet" href="assets/css/global.css" />
         <link rel="stylesheet" href="assets/css/header.css" />
         <link rel="stylesheet" href="assets/css/footer.css" />
         <link rel="stylesheet" href="assets/css/mensagens.css" />
-
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
-
     <body>
         <header class="site-header" data-header>
             <div class="container">
                 <div class="site-header__bar">
                     <a class="site-header__brand" href="PaginaInicial.html">
                         <div class="site-header__logo">🪐</div>
-
                         <div class="site-header__brand-text">
                             <strong class="site-header__title">GATON IX</strong>
-                            <span class="site-header__subtitle">Ronrons al&eacute;m das estrelas</span>
+                            <span class="site-header__subtitle">Ronrons além das estrelas</span>
                         </div>
                     </a>
-
-                    <button
-                    class="site-header__toggle"
-                    type="button"
-                    aria-label="Abrir menu"
-                    aria-expanded="false"
-                    data-menu-toggle
-                    ></button>
-
+                    <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle></button>
                     <nav class="site-header__nav" aria-label="Principal">
                         <ul class="site-header__menu">
-                            <li><a class="site-header__link" href="PaginaInicial.html">In&iacute;cio</a></li>
-                            <li><a class="site-header__link" href="Tripulacao.html">Tripula&ccedil;&atilde;o</a></li>
-                            <li><a class="site-header__link" href="Cidades.html">Cidades</a></li>
+                            <li><a class="site-header__link" href="PaginaInicial.html">Início</a></li>
+                            <li><a class="site-header__link" href="Tripulacao.html">Tripulação</a></li>
+                            <li><a class="site-header__link" href="Missoes.html">Missões</a></li>
                             <li><a class="site-header__link" href="Loja.html">Loja</a></li>
                             <li><a class="site-header__link active" href="Mensagens.html">Mensagens</a></li>
                             <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
-                            <li><a class="site-header__link" href="Diario.html">Di&aacute;rio</a></li>
+                            <li><a class="site-header__link" href="Diario.html">Diário</a></li>
                         </ul>
                     </nav>
-
                     <div class="site-header__actions">
-                        <a class="btn btn-primary site-header__city-btn" href="Cidades.html">
-                            Ver cidades
-                        </a>
+                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na missão</a>
                     </div>
                 </div>
             </div>
@@ -60,11 +45,7 @@
                     <div class="mensagens-box">
                         <div class="mensagens-content">
                             <p class="mensagens-tag">✦ TRANSMISSÕES INTERGALÁCTICAS ✦</p>
-
-                            <h1 class="mensagens-title section-title">
-                                MENSAGENS EM GARRAFAS ESPACIAIS
-                            </h1>
-
+                            <h1 class="mensagens-title section-title">MENSAGENS EM GARRAFAS ESPACIAIS</h1>
                             <p class="mensagens-text section-text">
                                 Envie uma transmissão para a tripulação da Gaton IX.
                                 Sua mensagem será convertida em um holograma luminoso
@@ -76,14 +57,11 @@
                     <div class="mensagens-grid">
                         <div class="mensagens-card">
                             <h2>Enviar transmissão</h2>
-
                             <form id="formMensagem">
                                 <label for="nome">Seu nome terrestre</label>
                                 <input type="text" id="nome" placeholder="Ex: Luiz da Terra" required>
-
                                 <label for="planeta">Cidade de origem</label>
                                 <input type="text" id="planeta" placeholder="Ex: Ronronópolis, São Felino, Teresina Prime" required>
-
                                 <label for="tipo">Tipo de mensagem</label>
                                 <select id="tipo" required>
                                     <option value="">Selecione</option>
@@ -92,20 +70,12 @@
                                     <option value="Relato cósmico">Relato cósmico</option>
                                     <option value="Miau diplomático">Miau diplomático</option>
                                 </select>
-
                                 <label for="mensagem">Mensagem</label>
                                 <textarea id="mensagem" placeholder="Digite sua mensagem para os Gatonautas..." required></textarea>
-
-                                <button type="submit" class="btn btn-primary">
-                                    Enviar para a Gaton IX
-                                </button>
+                                <button type="submit" class="btn btn-primary">Enviar para a Gaton IX</button>
                             </form>
-
-                            <button id="limparMensagens" class="mensagens-limpar">
-                                Apagar hologramas
-                            </button>
+                            <button id="limparMensagens" class="mensagens-limpar">Apagar hologramas</button>
                         </div>
-
                         <div class="mensagens-card">
                             <h2>Sala de Hologramas</h2>
                             <div id="listaMensagens" class="mensagens-area"></div>
@@ -122,25 +92,14 @@
                         <h3>GATON IX</h3>
                         <p>Uma família disfuncional que ama explorar o cosmos</p>
                     </div>
-
                     <div class="footer-social">
                         <h3>SIGA A GATON IX</h3>
-
                         <div class="footer-links">
-                            <a href="#" aria-label="Discord">
-                                <i class="fa-brands fa-discord"></i>
-                            </a>
-
-                            <a href="#" aria-label="Instagram">
-                                <i class="fa-brands fa-instagram"></i>
-                            </a>
-
-                            <a href="#" aria-label="YouTube">
-                                <i class="fa-brands fa-youtube"></i>
-                            </a>
+                            <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
                         </div>
                     </div>
-
                     <div class="footer-email">
                         <h3>RECEBA ATUALIZAÇÕES</h3>
                     </div>
