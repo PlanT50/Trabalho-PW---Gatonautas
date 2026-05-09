@@ -371,17 +371,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     ENTRADAS_RESOLVIDAS = await resolverImagens(ENTRADAS_FIXAS);
 
-    // carrega imagem do gato no hero
-    const heroMedia = document.getElementById("diarioHeroMedia");
-    if (heroMedia) {
-        const heroImgs = await buscarImagensGato(1);
-        if (heroImgs.length) {
-            const img = document.createElement("img");
-            img.src = heroImgs[0];
-            img.alt = "Gatinho da Gaton IX";
-            heroMedia.appendChild(img);
-        }
-    }
-
     renderizarTimeline("all");
 });
