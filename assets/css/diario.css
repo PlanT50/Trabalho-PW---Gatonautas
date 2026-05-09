@@ -38,11 +38,13 @@
 
 .diario-title {
     margin-bottom: 1.2rem;
+    font-size: clamp(2.4rem, 7vw, 5rem);
     background: linear-gradient(to bottom, #ffffff 0%, #d9c2ff 45%, #6b4dff 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
+
 
 .diario-hero__divider {
     width: 60px;
@@ -55,8 +57,10 @@
 .diario-subtitle {
     max-width: 620px;
     margin: 0 auto;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    font-weight: 700;
     color: var(--text-soft);
-    font-size: 1.1rem;
+    line-height: 1.7;
 }
 
 /* Filtros */
