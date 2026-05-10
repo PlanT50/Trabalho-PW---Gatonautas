@@ -42,39 +42,67 @@
             <section class="cat-cities section">
                 <div class="container">
                     <div class="city-box page-hero">
-                        <h1 class="city-title section-title">Cidades Felinas</h1>
+                        <p class="mission-kicker">Central de missões da ONG</p>
+                        <h1 class="city-title section-title">Planetas em acompanhamento</h1>
                         <h2 class="city-description section-text">
-                            Aqui é onde os gatonautas visitam cidades cheias de bigodes, ronrons e novas chances de adoção.
+                            Cada planeta representa uma frente de cuidado: resgate, abrigo, saúde, adoção e educação para proteger gatos em situação de vulnerabilidade.
                         </h2>
                         <p class="city-description2 section-text">
-                            Escolha uma cidade abaixo e mande um ou mais gatinhos para espalhar carinho, brinquedinhos e esperança por lá.
+                            Abra um planeta para enviar um gatonauta, acompanhar metas e registrar as pequenas grandes transformações que acontecem no caminho.
                         </p>
                     </div>
 
-                    <section class="cities" aria-label="Cidades disponíveis">
+                    <section class="mission-summary" aria-label="Resumo das missões">
+                        <article class="mission-stat card">
+                            <span class="mission-stat__value">48</span>
+                            <span class="mission-stat__label">gatos acolhidos</span>
+                        </article>
+                        <article class="mission-stat card">
+                            <span class="mission-stat__value">31</span>
+                            <span class="mission-stat__label">tratamentos concluídos</span>
+                        </article>
+                        <article class="mission-stat card">
+                            <span class="mission-stat__value">22</span>
+                            <span class="mission-stat__label">adoções acompanhadas</span>
+                        </article>
+                    </section>
+
+                    <section class="cities" aria-label="Planetas em acompanhamento">
                         <div class="city-card card ronronopolis">
-                            <h3 class="text-city">Ronronópolis</h3>
-                            <button class="btn btn-primary city-open" data-city="Ronronópolis">Visitar cidade</button>
+                            <span class="planet-tag">Resgate</span>
+                            <h3 class="text-city">Planeta Ronronópolis</h3>
+                            <p class="planet-copy">Busca ativa, captura segura e primeira avaliação dos gatos encontrados nas ruas.</p>
+                            <button class="btn btn-primary city-open" data-city="Planeta Ronronópolis">Acompanhar planeta</button>
                         </div>
                         <div class="city-card card bigodopolis">
-                            <h3 class="text-city">Bigodópolis</h3>
-                            <button class="btn btn-primary city-open" data-city="Bigodópolis">Visitar cidade</button>
+                            <span class="planet-tag">Acolhimento</span>
+                            <h3 class="text-city">Planeta Bigodópolis</h3>
+                            <p class="planet-copy">Lares temporários, socialização e rotina segura para quem acabou de chegar.</p>
+                            <button class="btn btn-primary city-open" data-city="Planeta Bigodópolis">Acompanhar planeta</button>
                         </div>
                         <div class="city-card card miau-horizonte">
-                            <h3 class="text-city">Miau Horizonte</h3>
-                            <button class="btn btn-primary city-open" data-city="Miau Horizonte">Visitar cidade</button>
+                            <span class="planet-tag">Saúde</span>
+                            <h3 class="text-city">Planeta Miau Horizonte</h3>
+                            <p class="planet-copy">Vacinação, castração, exames e recuperação com parceiros veterinários.</p>
+                            <button class="btn btn-primary city-open" data-city="Planeta Miau Horizonte">Acompanhar planeta</button>
                         </div>
                         <div class="city-card card sao-felino">
-                            <h3 class="text-city">São Felino</h3>
-                            <button class="btn btn-primary city-open" data-city="São Felino">Visitar cidade</button>
+                            <span class="planet-tag">Adoção</span>
+                            <h3 class="text-city">Planeta São Felino</h3>
+                            <p class="planet-copy">Triagem de famílias, adaptação ao novo lar e acompanhamento pós-adoção.</p>
+                            <button class="btn btn-primary city-open" data-city="Planeta São Felino">Acompanhar planeta</button>
                         </div>
                         <div class="city-card card arranhaceu">
-                            <h3 class="text-city">Arranhacéu</h3>
-                            <button class="btn btn-primary city-open" data-city="Arranhacéu">Visitar cidade</button>
+                            <span class="planet-tag">Educação</span>
+                            <h3 class="text-city">Planeta Arranhacéu</h3>
+                            <p class="planet-copy">Campanhas de guarda responsável, castração e enriquecimento ambiental.</p>
+                            <button class="btn btn-primary city-open" data-city="Planeta Arranhacéu">Acompanhar planeta</button>
                         </div>
                         <div class="city-card card almofadinha-sul">
-                            <h3 class="text-city">Almofadinha do Sul</h3>
-                            <button class="btn btn-primary city-open" data-city="Almofadinha do Sul">Visitar cidade</button>
+                            <span class="planet-tag">Reencontro</span>
+                            <h3 class="text-city">Planeta Almofadinha do Sul</h3>
+                            <p class="planet-copy">Divulgação de gatos perdidos, identificação e apoio às famílias tutoras.</p>
+                            <button class="btn btn-primary city-open" data-city="Planeta Almofadinha do Sul">Acompanhar planeta</button>
                         </div>
                     </section>
                 </div>
@@ -83,11 +111,35 @@
             <section class="city-selector" id="city-selector" aria-hidden="true">
                 <div class="city-panel">
                     <div class="city-header">
-                        <h2>Escolha um GATONAUTA</h2>
-                        <button type="button" id="close-city" aria-label="Fechar">x</button>
+                        <div>
+                            <p class="mission-kicker">Painel orbital</p>
+                            <h2 id="selected-city">Planeta selecionado</h2>
+                        </div>
+                        <button type="button" id="close-city" aria-label="Fechar">×</button>
                     </div>
-                    <p id="selected-city"></p>
-                    <div id="crew-options"></div>
+                    <div class="mission-panel-grid">
+                        <article class="mission-brief card">
+                            <h3>Objetivo da missão</h3>
+                            <p id="mission-brief-text"></p>
+                        </article>
+
+                        <article class="mission-brief card">
+                            <h3>Enviar gatonauta</h3>
+                            <p>Escolha quem vai reforçar esta frente de cuidado e gerar um novo registro de transformação.</p>
+                            <div id="crew-options"></div>
+                        </article>
+                    </div>
+
+                    <article class="transformation-log card">
+                        <div class="transformation-log__header">
+                            <div>
+                                <p class="mission-kicker">Registro de transformações</p>
+                                <h3>Impactos recentes</h3>
+                            </div>
+                            <span id="transformation-count"></span>
+                        </div>
+                        <div id="transformation-list"></div>
+                    </article>
                 </div>
             </section>
         </main>
