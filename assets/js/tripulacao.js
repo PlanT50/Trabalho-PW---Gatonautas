@@ -1,4 +1,4 @@
-const CAT_API_KEY = "SUA_CHAVE_AQUI";
+const CAT_API_KEY = "live_7VCePz35kmHUCkLOfm7lruWaznjafnavl4OtUerH8llWlzqXD76IUHMUra8H3bKM";
 
 const funcaoDesc = {
   Comandante: "Gatinho líder, adora atenção e manda em todo mundo",
