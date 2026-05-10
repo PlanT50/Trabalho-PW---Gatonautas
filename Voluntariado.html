@@ -3,17 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <title>Voluntariado</title>
+
         <link rel="stylesheet" href="assets/css/global.css" />
         <link rel="stylesheet" href="assets/css/header.css" />
         <link rel="stylesheet" href="assets/css/footer.css" />
+        <link rel="stylesheet" href="assets/css/voluntariado.css" />
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
+
     <body>
         <header class="site-header" data-header>
             <div class="container">
                 <div class="site-header__bar">
                     <a class="site-header__brand" href="PaginaInicial.html">
                         <div class="site-header__logo">🪐</div>
+
                         <div class="site-header__brand-text">
                             <strong class="site-header__title">GATON IX</strong>
                             <span class="site-header__subtitle">Ronrons al&eacute;m das estrelas</span>
@@ -29,23 +34,163 @@
                     ></button>
 
                     <nav class="site-header__nav" aria-label="Principal">
-                    <ul class="site-header__menu">
-                        <li><a class="site-header__link" href="PaginaInicial.html">In&iacute;cio</a></li>
-                        <li><a class="site-header__link" href="Tripulacao.html">Tripula&ccedil;&atilde;o</a></li>
-                        <li><a class="site-header__link" href="Missoes.html">Miss&otilde;es</a></li>
-                        <li><a class="site-header__link" href="Loja.html">Loja</a></li>
-                        <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
-                        <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
-                        <li><a class="site-header__link" href="Diario.html">Di&aacute;rio</a></li>
-                    </ul>
+                        <ul class="site-header__menu">
+                            <li><a class="site-header__link" href="PaginaInicial.html">In&iacute;cio</a></li>
+                            <li><a class="site-header__link" href="Tripulacao.html">Tripula&ccedil;&atilde;o</a></li>
+                            <li><a class="site-header__link" href="Missoes.html">Miss&otilde;es</a></li>
+                            <li><a class="site-header__link" href="Loja.html">Loja</a></li>
+                            <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
+                            <li><a class="site-header__link active" href="Voluntariado.html">Voluntariado</a></li>
+                            <li><a class="site-header__link" href="Diario.html">Di&aacute;rio</a></li>
+                        </ul>
                     </nav>
 
                     <div class="site-header__actions">
-                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na miss&atilde;o</a>
+                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">
+                            Entrar na miss&atilde;o
+                        </a>
                     </div>
                 </div>
             </div>
         </header>
+
+        <main>
+            <section class="voluntariado-home">
+                <div class="container">
+                    <div class="voluntariado-box">
+                        <div class="voluntariado-content">
+                            <p class="voluntariado-tag">✦ RECRUTAMENTO TERRESTRE ✦</p>
+
+                            <h1 class="voluntariado-title section-title">
+                                VOCÊ TEM O QUE É PRECISO PARA SER NOSSO COMUNICADOR TERRESTRE?
+                            </h1>
+
+                            <p class="voluntariado-text section-text">
+                                A tripulação da Gaton IX precisa de humanos corajosos para ajudar
+                                a transmitir mensagens, registrar descobertas e apoiar a missão
+                                de levar ronrons para toda a galáxia.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="voluntariado-grid">
+                        <div class="voluntariado-card">
+                            <h2>Formulário de Voluntariado</h2>
+
+                            <form id="formVoluntariado">
+                                <label for="nome">Nome completo</label>
+                                <input type="text" id="nome" placeholder="Ex: Samuel Oliveira" required>
+
+                                <label for="email">E-mail</label>
+                                <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+
+                                <label for="planeta">Planeta, cidade ou base de origem</label>
+                                <input type="text" id="planeta" placeholder="Ex: Terra, Piracuruca, Setor Lunar 7" required>
+
+                                <label for="funcao">Função desejada</label>
+                                <select id="funcao" required>
+                                    <option value="">Selecione</option>
+                                    <option value="Comunicador Terrestre">Comunicador Terrestre</option>
+                                    <option value="Cuidador de Brinquedinhos Espaciais">Cuidador de Brinquedinhos Espaciais</option>
+                                    <option value="Analista de Planetas Tristes">Analista de Planetas Tristes</option>
+                                    <option value="Guardião de Ronrons Cósmicos">Guardião de Ronrons Cósmicos</option>
+                                </select>
+
+                                <label for="motivacao">Por que você quer entrar na missão?</label>
+                                <textarea id="motivacao" placeholder="Conte por que você quer ajudar a Gaton IX..." required></textarea>
+
+                                <h3>Teste rápido da tripulação</h3>
+
+                                <label for="pergunta1">Se um planeta estiver triste, você faria primeiro:</label>
+                                <select id="pergunta1" required>
+                                    <option value="">Selecione</option>
+                                    <option value="3">Enviar energia solar e organizar uma festa de boas-vindas</option>
+                                    <option value="2">Investigar o problema antes de agir</option>
+                                    <option value="1">Esperar outro voluntário resolver</option>
+                                </select>
+
+                                <label for="pergunta2">Um gato astronauta dormiu no painel de controle. Você:</label>
+                                <select id="pergunta2" required>
+                                    <option value="">Selecione</option>
+                                    <option value="3">Desvia a nave com cuidado e deixa o gato dormir</option>
+                                    <option value="2">Acorda o gato com carinho</option>
+                                    <option value="1">Entra em pânico imediatamente</option>
+                                </select>
+
+                                <label for="pergunta3">Sua maior habilidade em uma missão seria:</label>
+                                <select id="pergunta3" required>
+                                    <option value="">Selecione</option>
+                                    <option value="3">Comunicação, criatividade e trabalho em equipe</option>
+                                    <option value="2">Organização e observação</option>
+                                    <option value="1">Improvisar tudo no último segundo</option>
+                                </select>
+
+                                <button type="submit" class="btn btn-primary">
+                                    Enviar candidatura
+                                </button>
+                            </form>
+                        </div>
+
+                        <div class="voluntariado-card">
+                            <h2>Status da Candidatura</h2>
+
+                            <div id="resultadoVoluntariado" class="resultado-voluntariado">
+                                <p>
+                                    Preencha o formulário para descobrir se você está pronto
+                                    para se tornar um Comunicador Terrestre da Gaton IX.
+                                </p>
+                            </div>
+
+                            <div class="voluntariado-info">
+                                <h3>O que um voluntário faz?</h3>
+
+                                <ul>
+                                    <li>Ajuda a acompanhar os planetas visitados.</li>
+                                    <li>Envia mensagens de apoio para a tripulação.</li>
+                                    <li>Divulga os diários de bordo da missão.</li>
+                                    <li>Protege a reputação dos gatos astronautas.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>GATON IX</h3>
+                        <p>Uma família disfuncional que ama explorar o cosmos</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <h3>SIGA A GATON IX</h3>
+
+                        <div class="footer-links">
+                            <a href="#" aria-label="Discord">
+                                <i class="fa-brands fa-discord"></i>
+                            </a>
+
+                            <a href="#" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+
+                            <a href="#" aria-label="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-email">
+                        <h3>RECEBA ATUALIZAÇÕES</h3>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         <script src="assets/js/header.js"></script>
+        <script src="assets/js/voluntariado.js"></script>
     </body>
 </html>

@@ -1,0 +1,164 @@
+.voluntariado-home {
+    padding: 70px 0 90px;
+    color: #ffffff;
+}
+
+.voluntariado-box {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.voluntariado-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.voluntariado-tag {
+    color: #9ee7ff;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+}
+
+.voluntariado-title {
+    color: #ffffff;
+    margin-bottom: 18px;
+    text-shadow: 0 0 18px rgba(158, 231, 255, 0.35);
+}
+
+.voluntariado-text {
+    max-width: 790px;
+    margin: 0 auto;
+    color: #d7e9ff;
+    line-height: 1.7;
+}
+
+.voluntariado-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 32px;
+}
+
+.voluntariado-card {
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(158, 231, 255, 0.28);
+    border-radius: 20px;
+    padding: 28px;
+    box-shadow: 0 0 28px rgba(75, 198, 255, 0.09);
+    backdrop-filter: blur(10px);
+}
+
+.voluntariado-card h2 {
+    color: #9ee7ff;
+    margin-bottom: 22px;
+    font-size: 1.6rem;
+}
+
+.voluntariado-card h3 {
+    color: #ffffff;
+    margin-top: 24px;
+    margin-bottom: 14px;
+}
+
+#formVoluntariado label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    color: #9ee7ff;
+    font-weight: 700;
+}
+
+#formVoluntariado input,
+#formVoluntariado textarea,
+#formVoluntariado select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(158, 231, 255, 0.35);
+    outline: none;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    backdrop-filter: blur(8px);
+    transition: 0.25s;
+}
+
+#formVoluntariado input:focus,
+#formVoluntariado textarea:focus,
+#formVoluntariado select:focus {
+    border-color: rgba(158, 231, 255, 0.85);
+    box-shadow: 0 0 14px rgba(158, 231, 255, 0.25);
+    background: rgba(255, 255, 255, 0.09);
+}
+
+#formVoluntariado input::placeholder,
+#formVoluntariado textarea::placeholder {
+    color: rgba(255, 255, 255, 0.48);
+}
+
+#formVoluntariado select option {
+    background: #111827;
+    color: #ffffff;
+}
+
+#formVoluntariado textarea {
+    resize: none;
+    min-height: 120px;
+}
+
+#formVoluntariado button {
+    width: 100%;
+    margin-top: 24px;
+}
+
+.resultado-voluntariado {
+    min-height: 150px;
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px dashed rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.025);
+    color: #d7e9ff;
+    line-height: 1.6;
+}
+
+.resultado-voluntariado.aprovado {
+    border-color: rgba(158, 231, 255, 0.6);
+    background: rgba(82, 214, 255, 0.1);
+    box-shadow: 0 0 20px rgba(82, 214, 255, 0.18);
+}
+
+.resultado-voluntariado.treinamento {
+    border-color: rgba(199, 125, 255, 0.55);
+    background: rgba(199, 125, 255, 0.09);
+}
+
+.resultado-voluntariado.recusado {
+    border-color: rgba(255, 179, 199, 0.45);
+    background: rgba(255, 179, 199, 0.08);
+}
+
+.resultado-voluntariado h3 {
+    color: #9ee7ff;
+    margin-top: 0;
+}
+
+.voluntariado-info {
+    margin-top: 28px;
+    color: #d7e9ff;
+}
+
+.voluntariado-info ul {
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.voluntariado-info li::marker {
+    color: #9ee7ff;
+}
+
+@media (max-width: 900px) {
+    .voluntariado-grid {
+        grid-template-columns: 1fr;
+    }
+}
