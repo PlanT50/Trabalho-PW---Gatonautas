@@ -1,9 +1,10 @@
 package com.gatonautas.gatonautasapi.controller;
 
 import com.gatonautas.gatonautasapi.model.Mensagens;
-import com.gatonautas.gatonautasapi.model.Mensagens;
 import com.gatonautas.gatonautasapi.repository.MensagemRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Map;
 
@@ -23,18 +24,22 @@ public class MensagemController {
     }
 
     @PostMapping
-    public Mensagens enviarMensagem(@RequestBody Map<String, String> body) {
-        String nome = body.get("nome");
-        String planeta = body.get("planeta");
-        String tipo = body.get("tipo");
+    public ResponseEntity<?> enviarMensagem(@RequestBody Map<String, String> body) {
+        String nome     = body.get("nome");
+        String planeta  = body.get("planeta");
+        String tipo     = body.get("tipo");
         String mensagem = body.get("mensagem");
 
-        Mensagens nova = new Mensagens(nome, planeta, tipo, mensagem);
-        return repository.save(nova);
+        if (nome == null || planeta == null || tipo == null || mensagem == null) {
+            return ResponseEntity.badRequest().body(Map.of("erro", "Todos os campos são obrigatórios"));
+        }
+
+        return ResponseEntity.ok(repository.save(new Mensagens(nome, planeta, tipo, mensagem)));
     }
 
     @DeleteMapping
-    public void limparTodas() {
+    public ResponseEntity<?> limparTodas() {
         repository.deleteAll();
+        return ResponseEntity.ok(Map.of("mensagem", "Todas as mensagens foram removidas"));
     }
 }

@@ -1,7 +1,14 @@
+const VOLUNTARIOS_API_URL = "https://engulf-deafness-trouble.ngrok-free.dev/voluntarios";
+
+const HEADERS_JSON = {
+    "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true"
+};
+
 const formVoluntariado = document.getElementById("formVoluntariado");
 const resultadoVoluntariado = document.getElementById("resultadoVoluntariado");
 
-formVoluntariado.addEventListener("submit", function (event) {
+formVoluntariado.addEventListener("submit", async function (event) {
     event.preventDefault();
 
     const nome = document.getElementById("nome").value.trim();
@@ -21,11 +28,29 @@ formVoluntariado.addEventListener("submit", function (event) {
 
     const pontuacao = pergunta1 + pergunta2 + pergunta3;
 
-    resultadoVoluntariado.classList.remove("aprovado", "treinamento", "recusado");
-
+    let resultado;
     if (pontuacao >= 8) {
-        resultadoVoluntariado.classList.add("aprovado");
+        resultado = "aprovado";
+    } else if (pontuacao >= 5) {
+        resultado = "treinamento";
+    } else {
+        resultado = "recusado";
+    }
 
+    try {
+        await fetch(VOLUNTARIOS_API_URL, {
+            method: "POST",
+            headers: HEADERS_JSON,
+            body: JSON.stringify({ nome, email, planeta, funcao, motivacao, pontuacao, resultado })
+        });
+    } catch (e) {
+        console.warn("Não foi possível salvar a candidatura na API:", e);
+    }
+
+    resultadoVoluntariado.classList.remove("aprovado", "treinamento", "recusado");
+    resultadoVoluntariado.classList.add(resultado);
+
+    if (resultado === "aprovado") {
         resultadoVoluntariado.innerHTML = `
             <h3>Candidatura aprovada, ${nome}!</h3>
 
@@ -38,9 +63,7 @@ formVoluntariado.addEventListener("submit", function (event) {
                 Status: pronto para receber o comunicador holográfico da missão.
             </p>
         `;
-    } else if (pontuacao >= 5) {
-        resultadoVoluntariado.classList.add("treinamento");
-
+    } else if (resultado === "treinamento") {
         resultadoVoluntariado.innerHTML = `
             <h3>Quase lá, ${nome}!</h3>
 
@@ -54,8 +77,6 @@ formVoluntariado.addEventListener("submit", function (event) {
             </p>
         `;
     } else {
-        resultadoVoluntariado.classList.add("recusado");
-
         resultadoVoluntariado.innerHTML = `
             <h3>Missão adiada, ${nome}.</h3>
 
