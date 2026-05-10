@@ -137,7 +137,7 @@ function getSavedTransformations() {
 
 function saveTransformation(planeta, transformacao) {
   const saved = getSavedTransformations();
-  saved[planeta] = [transformacao, ...(saved[planeta] || [])].slice(0, 4);
+  saved[planeta] = [transformacao, ...(saved[planeta] || [])];
   localStorage.setItem(STORAGE_KEY, JSON.stringify(saved));
 }
 
