@@ -6,6 +6,7 @@
         <link rel="stylesheet" href="assets/css/global.css" />
         <link rel="stylesheet" href="assets/css/header.css" />
         <link rel="stylesheet" href="assets/css/footer.css" />
+        <link rel="stylesheet" href="assets/css/loja.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
@@ -16,36 +17,424 @@
                         <div class="site-header__logo">🪐</div>
                         <div class="site-header__brand-text">
                             <strong class="site-header__title">GATON IX</strong>
-                            <span class="site-header__subtitle">Ronrons al&eacute;m das estrelas</span>
+                            <span class="site-header__subtitle">Ronrons além das estrelas</span>
                         </div>
                     </a>
-
-                    <button
-                    class="site-header__toggle"
-                    type="button"
-                    aria-label="Abrir menu"
-                    aria-expanded="false"
-                    data-menu-toggle
-                    ></button>
-
+                    <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle></button>
                     <nav class="site-header__nav" aria-label="Principal">
-                    <ul class="site-header__menu">
-                        <li><a class="site-header__link" href="PaginaInicial.html">In&iacute;cio</a></li>
-                        <li><a class="site-header__link" href="Tripulacao.html">Tripula&ccedil;&atilde;o</a></li>
-                        <li><a class="site-header__link" href="Missoes.html">Miss&otilde;es</a></li>
-                        <li><a class="site-header__link" href="Loja.html">Loja</a></li>
-                        <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
-                        <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
-                        <li><a class="site-header__link" href="Diario.html">Di&aacute;rio</a></li>
-                    </ul>
+                        <ul class="site-header__menu">
+                            <li><a class="site-header__link" href="PaginaInicial.html">Início</a></li>
+                            <li><a class="site-header__link" href="Tripulacao.html">Tripulação</a></li>
+                            <li><a class="site-header__link" href="Missoes.html">Missões</a></li>
+                            <li><a class="site-header__link" href="Loja.html">Loja</a></li>
+                            <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
+                            <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
+                            <li><a class="site-header__link" href="Diario.html">Diário</a></li>
+                        </ul>
                     </nav>
-
                     <div class="site-header__actions">
-                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na miss&atilde;o</a>
+                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na missão</a>
                     </div>
                 </div>
             </div>
         </header>
+
+        <main>
+            <section class="loja">
+                <span class="loja_tag">🛒✦ Mercado cósmico ✦🛒</span>
+                <h1 class="loja_titulo">A <span>boutique</span> <br>felina</h1>
+                <p class="loja_desc">
+                    Equipamentos da tripulação Gaton IX. <br>
+                    Cada item comprado suporta nossa ONG e a missão de levar ronrons à galáxia inteira
+                </p>
+                
+                <div class="loja_filtros" id="lojaBarraFiltros">
+                    <button class="loja-filtro-btn active" data-filter="Todos">Todos</button>
+                    <button class="loja-filtro-btn" data-filter="Essencial">Essenciais</button>
+                    <button class="loja-filtro-btn" data-filter="Kit">Kits</button>
+                    <button class="loja-filtro-btn" data-filter="Adoção">Adoções</button>
+                    <button class="loja-filtro-btn" data-filter="Certificado">Certificados</button>
+                </div>
+            </section>
+
+            <section class="loja_produtos" aria-label="Produtos da Loja">
+                <div class="loja_qnt" id="lojaQnt"></div>
+                <div class="loja_exib" id="lojaExib"></div>
+            </section>
+        </main>
+
+        <div class="prod-modal-overlay" id="prodModalOverlay" role="dialog" aria-modal="true" aria-labelledby="prodModalNome">
+            <div class="prod-modal">
+                <button class="prod-modal__close" id="prodModalClose" aria-label="Fechar">✕</button>
+                <div class="prod-modal__hero" id="prodModalEmoji"></div>
+                <div class="prod-modal__body">
+                    <p class="prod-modal__sku" id="prodModalSku"></p>
+                    <h2 class="prod-modal__name" id="prodModalName"></h2>
+                    <p class="prod-modal__cat" id="prodModalCat"></p>
+
+                    <div class="prod-modal__stats" id="prodModalStats"></div>
+                    <div class="prod-modal__divider"></div>
+
+                    <p class="prod-modal__desc-title">Sobre o item:</p>
+                    <p class="prod-modal__desc" id="prodModalDesc"></p>
+
+                    <div class="prod-modal__includes" id="prodModalIncludes"></div>
+
+                    <div class="prod-modal__footer">
+                        <div class="prod-modal__price-wrap">
+                            <p class="prod-modal__price-label">Valor da missão</p>
+                            <p class="prod-modal__price" id="prodModalPrice"></p>
+                        </div>
+                        <button class="prod-modal__cta" id="prodModalCta">Adicionar ao carrinho</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+        <button class="cart-fab" id="cartFab" aria-label="Ver carrinho">
+            🛒
+            <span class="cart-fab__badge" id="cartBadge">0</span>
+        </button>
+        
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>GATON IX</h3>
+                    <p>Uma família disfuncional que ama explorar o cosmos</p>
+                </div>
+
+                <div class="footer-social">
+                    <h3>SIGA A GATON IX</h3>
+                    <div class="footer-links">
+                        <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-email">
+                    <h3>RECEBA ATUALIZAÇÕES</h3>
+                </div>
+            </div>
+        </div>
+    </footer>
+
         <script src="assets/js/header.js"></script>
+
+        <script>
+            var PRODUTOS = [
+                {     
+                    sku:       'GX-ITEM-001',
+                    nome:      'Parafuso Vital Certificado',
+                    categoria: 'Essencial',
+                    emoji:     '🔩',
+                    badge:     'best',
+                    badgeLabel:'Mais vendido',
+                    preco:     'R$ 47,00',
+                    precoNum:  47,
+                    estoque:   true,
+                    desc:      'O parafuso que segura a asa esquerda da Gaton IX. Sim, esse mesmo. Adote o seu e receba um Certificado de Guardião Espacial em papel vegetal com selo holográfico da tripulação.',
+                    includes:  ['Parafuso original (réplica certificada)', 'Certificado de Guardião Espacial', 'Carta de agradecimento da Comandante Miau Zeta', 'Código de rastreio da peça original na nave'],
+                    tags:      ['Certificado', 'Edição limitada', 'Essencial'],
+                    stats:     { Peso: '12g', Material: 'Aço estelar', Garantia: '10 anos-luz' }
+                },
+                {
+                    sku:       'GX-KIT-001',
+                    nome:      'Kit Sobrevivência em Buracos de Minhoca',
+                    categoria: 'Kit',
+                    emoji:     '🧰',
+                    badge:     'kit',
+                    badgeLabel:'Kit',
+                    preco:     'R$ 139,00',
+                    precoNum:  139,
+                    estoque:   true,
+                    desc:      'Tudo que você precisa para atravessar um buraco de minhoca com dignidade felina. Manual ilustrado pela engenheira Orbit Patinha, amostra de comida desidratada e muito mais.',
+                    includes:  ['Manual ilustrado "Como não se perder no espaço-tempo"', 'Amostra de comida desidratada (sabor atum cósmico)', 'Bússola quântica de bolso', 'Patch bordado da missão', 'Bag impermeável da Gaton IX'],
+                    tags:      ['Kit', 'Sobrevivência', 'Manual incluso'],
+                    stats:     { Itens: '5 peças', Peso: '340g', Destino: 'Qualquer' }
+                },
+                {
+                    sku:       'GX-ADOT-001',
+                    nome:      'Adote o KAT-4000',
+                    categoria: 'Adoção',
+                    emoji:     '🤖',
+                    badge:     'novo',
+                    badgeLabel:'Novo',
+                    preco:     'R$ 89,00 / mês',
+                    precoNum:  89,
+                    estoque:   true,
+                    desc:      'Adote nosso gato-robô KAT-4000 e receba atualizações mensais diretamente dele — incluindo fotos das missões, áudios de ronrons digitais e um diário de bordo exclusivo.',
+                    includes:  ['Diário digital mensal do KAT-4000', 'Foto exclusiva da missão do mês', 'Arquivo de áudio: ronrons sintéticos HD', 'Acesso ao canal privado de adotantes', 'Plaquinha digital de Tutor Cósmico'],
+                    tags:      ['Adoção', 'Assinatura', 'Exclusivo'],
+                    stats:     { Frequência: 'Mensal', Formato: 'Digital', Validade: 'Enquanto orbita' }
+                },
+                {
+                    sku:       'GX-ITEM-002',
+                    nome:      'Novelo de Emergência Intergalático',
+                    categoria: 'Essencial',
+                    emoji:     '🧶',
+                    badge:     null,
+                    badgeLabel:null,
+                    preco:     'R$ 32,00',
+                    precoNum:  32,
+                    estoque:   true,
+                    desc:      'Mesmo modelo e marca usados pela tripulação em situações de crise gravitacional. Feito com fibra de estrela de nêutrons (simulada). Aprovado por Quasar Pata, especialista em sobrevivência.',
+                    includes:  ['Novelo 200m fibra especial', 'Tag de identificação da Gaton IX', 'Guia de nós espaciais (12 técnicas)'],
+                    tags:      ['Essencial', 'Aprovado pela tripulação'],
+                    stats:     { Comprimento: '200m', Resistência: '4000N', Cor: 'Nebulosa' }
+                },
+                {
+                    sku:       'GX-KIT-002',
+                    nome:      'Kit Missão Primeiro Contato',
+                    categoria: 'Kit',
+                    emoji:     '📡',
+                    badge:     'kit',
+                    badgeLabel:'Kit',
+                    preco:     'R$ 198,00',
+                    precoNum:  198,
+                    estoque:   true,
+                    desc:      'Para quem quer fazer parte de uma missão de verdade. Este kit inclui tudo para você se comunicar com planetas que nunca viram um gato antes. Resultado garantido: confusão e ronrons.',
+                    includes:  ['Antena direcional de mesa (decorativa)', 'Codebook de sinais da Gaton IX', 'Poster "Planetas que salvamos" (A2)', 'Crachá de Comunicador Terrestre Honorário', 'Adesivos da missão (pack 20 un)'],
+                    tags:      ['Kit', 'Comunicação', 'Poster incluso'],
+                    stats:     { Itens: '5 peças', Alcance: 'Teórico', Nível: 'Iniciante' }
+                },
+                {
+                    sku:       'GX-CERT-001',
+                    nome:      'Certificado Tripulação Honorária',
+                    categoria: 'Certificado',
+                    emoji:     '📜',
+                    badge:     'best',
+                    badgeLabel:'Mais pedido',
+                    preco:     'R$ 68,00',
+                    precoNum:  68,
+                    estoque:   true,
+                    desc:      'Seja oficialmente reconhecido como membro honorário da Gaton IX. Assinado pela Comandante Miau Zeta, em papel premium 300g com carimbo de cera espacial.',
+                    includes:  ['Certificado A4 papel 300g', 'Carimbo de cera com selo oficial', 'Envelope lacrado com cera', 'Código de verificação na nave', 'Pin metálico da Gaton IX'],
+                    tags:      ['Certificado', 'Edição premium', 'Numerado'],
+                    stats:     { Formato: 'A4 físico', Validade: 'Eterna', Numeração: 'Única' }
+                },
+                {
+                    sku:       'GX-ADOT-002',
+                    nome:      'Adote um Planeta Anão',
+                    categoria: 'Adoção',
+                    emoji:     '🌎',
+                    badge:     'novo',
+                    badgeLabel:'Novo',
+                    preco:     'R$ 55,00',
+                    precoNum:  55,
+                    estoque:   true,
+                    desc:      'Um planeta de verdade do catálogo da missão passa a ter seu nome. Receba as coordenadas, o certificado de adoção e uma atualização anual com foto astronômica da região.',
+                    includes:  ['Certificado de adoção do planeta', 'Coordenadas galáticas oficiais', 'Foto da região (arquivo digital HD)', 'Placa comemorativa digital', 'Atualização anual com dados da missão'],
+                    tags:      ['Adoção', 'Planeta', 'Coordenadas incluídas'],
+                    stats:     { Tamanho: 'Varia', Distância: 'Longe', Atualização: 'Anual' }
+                },
+                {
+                    sku:       'GX-ITEM-003',
+                    nome:      'Capacete Espacial Miniatura',
+                    categoria: 'Essencial',
+                    emoji:     '⛑️',
+                    badge:     null,
+                    badgeLabel:null,
+                    preco:     'R$ 0,00',
+                    precoNum:  0,
+                    estoque:   false,
+                    desc:      'Réplica em escala 1:4 do capacete usado pela tripulação. Peça de colecionador com visor refletivo e inscrição "Gaton IX" gravada a laser. Esgotado na última missão.',
+                    includes:  ['Capacete miniatura 1:4', 'Suporte de exposição acrílico', 'Cartão de autenticidade numerado'],
+                    tags:      ['Colecionador', 'Edição limitada', 'Esgotado'],
+                    stats:     { Escala: '1:4', Material: 'Resina + acrílico', Numeração: 'Esgotada' }
+                }
+            ];
+
+            var filtroAtivo = 'Todos';
+            var carrCont = 0;
+            var prodAtual = null;
+
+
+            function renderCard(prod, delay) {
+                var card = document.createElement('div');
+                card.className = 'product-card';
+                card.dataset.categoria = prod.categoria;
+                card.style.animationDelay = delay + 'ms';
+
+                var badgeHtml = prod.badge
+                    ? '<span class="product-card__badge ' + prod.badge + '">' + prod.badgeLabel + '</span>'
+                    : '';
+
+                var estoqueHtml = prod.estoque
+                    ? '<span class="product-card__estoque"><span class="estoque-dot"></span>Em estoque</span>'
+                    : '<span class="product-card__estoque esgotado"><span class="estoque-dot"></span>Esgotado</span>';
+                
+                var tagsHtml = prod.tags
+                    .map(function(t) { return '<span class="tag">' + t + '</span>'; })
+                    .join('');
+
+                var btnHtml = prod.estoque
+                    ? '<button class="product-card__btn">Comprar</button>'
+                    : '<button class="product-card__btn disabled" disabled>Esgotado</button>';
+
+                var priceClass = prod.estoque ? '' : 'esgotado-txt';
+                var priceVal   = prod.estoque ? prod.preco : 'Indisponível';
+
+                card.innerHTML =
+                    '<div class="product-card__img-wrap">' +
+                        badgeHtml +
+                        estoqueHtml +
+                        '<div class="product-card__emoji">' + prod.emoji + '</div>' +
+                    '</div>' +
+                    '<div class="product-card__body">' +
+                        '<p class="product-card__sku">' + prod.sku + '</p>' +
+                        '<h3 class="product-card__name">' + prod.nome + '</h3>' +
+                        '<p class="product-card__categoria">' + prod.categoria + '</p>' +
+                        '<div class="product-card__divider"></div>' +
+                        '<p class="product-card__desc">' + prod.desc.substring(0, 100) + (prod.desc.length > 100 ? '…' : '') + '</p>' +
+                        '<div class="product-card__tags">' + tagsHtml + '</div>' +
+                    '</div>' +
+                    '<div class="product-card__footer">' +
+                        '<div class="product-card__price">' +
+                            '<span class="product-card__price-label">Valor</span>' +
+                            '<span class="product-card__price-val ' + priceClass + '">' + priceVal + '</span>' +
+                        '</div>' +
+                        btnHtml +
+                    '</div>';
+
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.product-card__btn') && prod.estoque) {
+                        addToCart(prod);
+                        return;
+                    }
+                    openModal(prod);
+                });
+
+                return card;
+            }
+
+            function renderGrid() {
+                var exib  = document.getElementById('lojaExib');
+                var qnt   = document.getElementById('lojaQnt');
+                exib.innerHTML = '';
+
+                var lista = filtroAtivo === 'Todos'
+                    ? PRODUTOS
+                    : PRODUTOS.filter(function(p) { return p.categoria === filtroAtivo; });
+
+                qnt.innerHTML = lista.length
+                    ? '<strong>' + lista.length + '</strong> ' + (lista.length === 1 ? 'item encontrado' : 'itens encontrados')
+                    : '';
+
+                if (!lista.length) {
+                    exib.innerHTML =
+                        '<div class="crew-error">' +
+                        '<span class="emoji">🔭</span>' +
+                        '<h3>Nenhum item nessa categoria</h3>' +
+                        '<p>Tente outro filtro ou volte mais tarde.</p>' +
+                        '</div>';
+                    return;
+                }
+
+                lista.forEach(function(p, i) {
+                    exib.appendChild(renderCard(p, i * 60));
+                });
+            }
+
+            function openModal(prod) {
+                prodAtual = prod;
+
+                document.getElementById('prodModalEmoji').textContent = prod.emoji;
+                document.getElementById('prodModalSku').textContent   = prod.sku;
+                document.getElementById('prodModalName').textContent  = prod.nome;
+                document.getElementById('prodModalCat').textContent   = prod.categoria;
+
+                var statsHtml = '';
+                Object.keys(prod.stats).forEach(function(k) {
+                    statsHtml +=
+                        '<div class="stat">' +
+                        '<div class="stat__label">' + k + '</div>' +
+                        '<div class="stat__val stat__val--small">' + prod.stats[k] + '</div>' +
+                        '</div>';
+                });
+                document.getElementById('prodModalStats').innerHTML = statsHtml;
+
+                document.getElementById('prodModalDesc').textContent = prod.desc;
+
+                var incEl = document.getElementById('prodModalIncludes');
+                if (prod.includes && prod.includes.length) {
+                    var listItems = prod.includes.map(function(i) { return '<li>' + i + '</li>'; }).join('');
+                    incEl.innerHTML =
+                        '<p class="prod-modal__includes-title">O que está incluído</p>' +
+                        '<ul>' + listItems + '</ul>';
+                } else {
+                    incEl.innerHTML = '';
+                }
+
+                document.getElementById('prodModalPrice').textContent = prod.preco;
+
+                var cta = document.getElementById('prodModalCta');
+                if (prod.estoque) {
+                    cta.textContent = 'Adicionar ao carrinho';
+                    cta.classList.remove('esgotado');
+                    cta.onclick = function() { addToCart(prod); closeModal(); };
+                } else {
+                    cta.textContent = 'Produto esgotado';
+                    cta.classList.add('esgotado');
+                    cta.onclick = null;
+                }
+
+                document.getElementById('prodModalOverlay').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                document.getElementById('prodModalOverlay').classList.remove('open');
+                document.body.style.overflow = '';
+                prodAtual = null;
+            }
+
+            document.getElementById('prodModalClose').addEventListener('click', closeModal);
+            document.getElementById('prodModalOverlay').addEventListener('click', function(e) {
+                if (e.target === document.getElementById('prodModalOverlay')) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            document.getElementById('lojaBarraFiltros').addEventListener('click', function(e) {
+                var btn = e.target.closest('.loja-filtro-btn');
+                if (!btn) return;
+                document.querySelectorAll('.loja-filtro-btn').forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                filtroAtivo = btn.dataset.filter;
+                renderGrid();
+            });
+
+            function addToCart(prod) {
+                carrCont++;
+                var badge = document.getElementById('cartBadge');
+                badge.textContent = carrCont;
+                badge.classList.add('visible');
+                showToast('✦ ' + prod.nome + ' adicionado ao carrinho!');
+            }
+
+            document.getElementById('cartFab').addEventListener('click', function() {
+                showToast(carrCont > 0
+                    ? '🛒 ' + carrCont + ' ' + (carrCont === 1 ? 'item' : 'itens') + ' no carrinho — A função de checkout chegará em breve!'
+                    : '🛒 Seu carrinho está vazio por enquanto.'
+                );
+            });
+
+            var toastTimer;
+            function showToast(msg) {
+                var el = document.getElementById('toast');
+                el.textContent = msg;
+                el.classList.add('show');
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(function() { el.classList.remove('show'); }, 3000);
+            }
+
+            renderGrid();
+
+        </script>
     </body>
 </html>

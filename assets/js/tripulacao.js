@@ -1,15 +1,25 @@
+const CAT_API_KEY = "SUA_CHAVE_AQUI";
+
+const funcaoDesc = {
+  Comandante: "Gatinho líder, adora atenção e manda em todo mundo",
+  Piloto: "Agitado, curioso e foge de tudo",
+  Engenheiro: "Teimoso, independente e faz tudo no seu tempo",
+  Cientista: "Curioso, observador e fica te analisando",
+  Médico: "Calmo, carinhoso e adora colo"
+};
+
 const tripulantes = [
   {
     id: "GX-001",
     nome: "Luna Nebulosa",
     funcao: "Cientista",
-    status: "Em Missão",
+    status: "Disponível",
     resumo: "Doutora em biologia espacial, especialista em plantas alienígenas e café de laboratório.",
     curiosidade: "Descobriu uma nova espécie de peixe espacial e nomeou de 'Cafélix'.",
     skills: ["Biologia", "Pesquisa de Campo", "Astrofísica"],
-    planeta: "Lua de Europa",
-    missao: 27,
-    rank: 4,
+    origem: "Teresina Prime",
+    tempoAbrigo: 3,
+    energia: 4,
     idade: 4,
     img: "assets/imgs/luna_nebulosa.jpg"
   },
@@ -17,13 +27,13 @@ const tripulantes = [
     id: "GX-002",
     nome: "Tom Vega",
     funcao: "Piloto",
-    status: "A bordo",
+    status: "Adotado",
     resumo: "Piloto veloz, dramático e viciado em manobras arriscadas.",
     curiosidade: "Tem alergia a poeira estelar, mas insiste em pilotar mesmo assim.",
     skills: ["Pilotagem", "Reflexo", "Mapas estelares"],
-    planeta: "Marte",
-    missao: 18,
-    rank: 4,
+    origem: "Fortaleza Galáctica",
+    tempoAbrigo: 1,
+    energia: 5,
     idade: 3,
     img: "assets/imgs/tom_vega.jpg"
   },
@@ -31,13 +41,13 @@ const tripulantes = [
     id: "GX-003",
     nome: "Pixel Garras",
     funcao: "Engenheiro",
-    status: "Em Missão",
+    status: "Disponível",
     resumo: "Responsável por consertar tudo que os outros quebram.",
     curiosidade: "Sempre carrega uma chave de fenda, mesmo sem bolsos.",
     skills: ["Mecânica", "Robótica", "Reparos"],
-    planeta: "Kepler-422b",
-    missao: 21,
-    rank: 4,
+    origem: "Recife Orbital",
+    tempoAbrigo: 5,
+    energia: 3,
     idade: 5,
     img: "assets/imgs/pixel_garras.jpg"
   },
@@ -45,13 +55,13 @@ const tripulantes = [
     id: "GX-004",
     nome: "Mika Andrômeda",
     funcao: "Cientista",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Especialista em analisar planetas, estrelas e potes de ração.",
     curiosidade: "Confunde lasers de laboratório com brinquedos.",
     skills: ["Pesquisa", "Xenobiologia", "Física Quântica"],
-    planeta: "Andrômeda",
-    missao: 15,
-    rank: 3,
+    origem: "Manaus Interestelar",
+    tempoAbrigo: 2,
+    energia: 4,
     idade: 2,
     img: "assets/imgs/mika_andromeda.jpg"
   },
@@ -59,13 +69,13 @@ const tripulantes = [
     id: "GX-005",
     nome: "Nina Cosmos",
     funcao: "Médico",
-    status: "Em Missão",
+    status: "Disponível",
     resumo: "Cuida da tripulação com patinhas leves e olhar julgador.",
     curiosidade: "Só atende pacientes depois de derrubar uma caneta da mesa.",
     skills: ["Medicina", "Primeiros Socorros", "Biologia"],
-    planeta: "Terra",
-    missao: 19,
-    rank: 4,
+    origem: "Salvador Cósmica",
+    tempoAbrigo: 4,
+    energia: 2,
     idade: 4,
     img: "assets/imgs/nina_cosmos.jpg"
   },
@@ -73,13 +83,13 @@ const tripulantes = [
     id: "GX-006",
     nome: "Ziggy Stardust",
     funcao: "Piloto",
-    status: "A bordo",
+    status: "Adotado",
     resumo: "Especialista em fugas rápidas e pousos pouco autorizados.",
     curiosidade: "Já estacionou a nave em cima de um asteroide proibido.",
     skills: ["Pilotagem", "Velocidade", "Improviso"],
-    planeta: "Vênus",
-    missao: 22,
-    rank: 4,
+    origem: "Belém Nebular",
+    tempoAbrigo: 2,
+    energia: 5,
     idade: 3,
     img: "assets/imgs/ziggy_stardust.jpg"
   },
@@ -87,13 +97,13 @@ const tripulantes = [
     id: "GX-007",
     nome: "Astro Garfield",
     funcao: "Engenheiro",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Resolve problemas técnicos, mas reclama durante todo o processo.",
     curiosidade: "Dorme apenas em cima do painel principal da nave.",
     skills: ["Engenharia", "Sistemas", "Energia"],
-    planeta: "Júpiter",
-    missao: 30,
-    rank: 5,
+    origem: "Porto Alegre Estelar",
+    tempoAbrigo: 7,
+    energia: 2,
     idade: 6,
     img: "assets/imgs/astro_garfield.jpg"
   },
@@ -101,13 +111,13 @@ const tripulantes = [
     id: "GX-008",
     nome: "Lyra Miau",
     funcao: "Cientista",
-    status: "Em Missão",
+    status: "Disponível",
     resumo: "Observadora das estrelas e das comidas esquecidas na bancada.",
     curiosidade: "Nomeou uma constelação inteira em homenagem ao próprio rabo.",
     skills: ["Astronomia", "Análise", "Cartografia"],
-    planeta: "Ross 128b",
-    missao: 14,
-    rank: 3,
+    origem: "Curitiba Sideral",
+    tempoAbrigo: 1,
+    energia: 3,
     idade: 2,
     img: "assets/imgs/lyra_miau.jpg"
   },
@@ -115,13 +125,13 @@ const tripulantes = [
     id: "GX-009",
     nome: "Bento Meteoro",
     funcao: "Médico",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Médico da nave e especialista em curativos espaciais.",
     curiosidade: "Usa bandagens como se fossem brinquedos.",
     skills: ["Medicina", "Diagnóstico", "Emergência"],
-    planeta: "Plutão",
-    missao: 16,
-    rank: 3,
+    origem: "Natal Cósmica",
+    tempoAbrigo: 6,
+    energia: 3,
     idade: 5,
     img: "assets/imgs/bento_meteoro.jpg"
   },
@@ -129,13 +139,13 @@ const tripulantes = [
     id: "GX-010",
     nome: "Capitã Amora",
     funcao: "Comandante",
-    status: "A bordo",
+    status: "Adotado",
     resumo: "Líder calma, estratégica e dona da cadeira principal da nave.",
     curiosidade: "Exige que todos façam silêncio durante sua soneca tática.",
     skills: ["Comando", "Diplomacia", "Estratégia"],
-    planeta: "Gliese 667Cc",
-    missao: 34,
-    rank: 5,
+    origem: "Brasília Galáctica",
+    tempoAbrigo: 3,
+    energia: 4,
     idade: 5,
     img: "assets/imgs/amora.jpg"
   },
@@ -143,13 +153,13 @@ const tripulantes = [
     id: "GX-011",
     nome: "Cookie Saturno",
     funcao: "Engenheiro",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Pequeno gênio da manutenção, especialista em cabos mordidos e motores barulhentos.",
     curiosidade: "Acredita que todo botão vermelho foi feito para ser apertado.",
     skills: ["Manutenção", "Eletrônica", "Motores"],
-    planeta: "Saturno",
-    missao: 12,
-    rank: 3,
+    origem: "São Luís Orbital",
+    tempoAbrigo: 2,
+    energia: 5,
     idade: 2,
     img: "assets/imgs/cookie_saturno.jpg"
   },
@@ -157,13 +167,13 @@ const tripulantes = [
     id: "GX-012",
     nome: "Sushi Orion",
     funcao: "Piloto",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Piloto reserva da Gaton IX, conhecido por pousos suaves e miados nervosos.",
     curiosidade: "Só consegue pilotar ouvindo música espacial bem alta.",
     skills: ["Pilotagem", "Orientação", "Controle de Rota"],
-    planeta: "Órion",
-    missao: 11,
-    rank: 3,
+    origem: "Florianópolis Interestelar",
+    tempoAbrigo: 3,
+    energia: 3,
     idade: 3,
     img: "assets/imgs/sushu_orion.jpg"
   },
@@ -171,13 +181,13 @@ const tripulantes = [
     id: "GX-013",
     nome: "Mel Quasar",
     funcao: "Médico",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Especialista em recuperação pós-missão e distribuição controlada de petiscos.",
     curiosidade: "Usa o estetoscópio para escutar ronrons escondidos.",
     skills: ["Cuidados", "Nutrição", "Emergência"],
-    planeta: "Netuno",
-    missao: 17,
-    rank: 4,
+    origem: "Maceió Nebular",
+    tempoAbrigo: 4,
+    energia: 2,
     idade: 4,
     img: "assets/imgs/mel_quasar.jpg"
   },
@@ -185,13 +195,13 @@ const tripulantes = [
     id: "GX-014",
     nome: "Tico Lunar",
     funcao: "Cientista",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Pesquisador curioso, especializado em minerais raros e objetos brilhantes.",
     curiosidade: "Já tentou catalogar uma bolinha de papel como artefato alienígena.",
     skills: ["Geologia", "Análise Mineral", "Catalogação"],
-    planeta: "Lua",
-    missao: 9,
-    rank: 2,
+    origem: "João Pessoa Estelar",
+    tempoAbrigo: 1,
+    energia: 4,
     idade: 2,
     img: "assets/imgs/tico_lunar.jpg"
   },
@@ -199,25 +209,49 @@ const tripulantes = [
     id: "GX-015",
     nome: "Nox Eclipse",
     funcao: "Engenheiro",
-    status: "A bordo",
+    status: "Disponível",
     resumo: "Técnico silencioso da nave, aparece sempre que alguma luz começa a piscar.",
     curiosidade: "Prefere trabalhar no escuro porque diz que pensa melhor assim.",
     skills: ["Sistemas", "Energia", "Segurança"],
-    planeta: "Titã",
-    missao: 20,
-    rank: 4,
+    origem: "Goiânia Sideral",
+    tempoAbrigo: 5,
+    energia: 2,
     idade: 5,
     img: "assets/imgs/nox_eclipse.jpg"
   }
 ];
 
-let allCrew = tripulantes;
+let allCrew = [];
 let activeFilter = "all";
 
-// ==========================
-// CRIAR CARD RESUMIDO
-// ==========================
+// buscar fotos da cat api
+async function fetchCatImages(quantidade) {
+  try {
+    const response = await fetch(
+      `https://api.thecatapi.com/v1/images/search?limit=${quantidade}&has_breeds=1`,
+      { headers: { "x-api-key": CAT_API_KEY } }
+    );
+    const data = await response.json();
+    return data.map(cat => cat.url);
+  } catch (error) {
+    console.error("erro ao buscar imagens:", error);
+    return [];
+  }
+}
 
+// iniciar página
+async function init() {
+  const catImgs = await fetchCatImages(tripulantes.length);
+
+  allCrew = tripulantes.map((member, index) => ({
+    ...member,
+    img: catImgs[index] || member.img
+  }));
+
+  renderGrid(allCrew);
+}
+
+// criar card
 function renderCard(member, delay) {
   const card = document.createElement("div");
 
@@ -227,34 +261,30 @@ function renderCard(member, delay) {
 
   card.innerHTML = `
     <div class="crew-card__img-wrap">
-        <span class="crew-card__status ${member.status === "Em Missão" ? "mission" : ""}">
+        <span class="crew-card__status ${member.status === "Adotado" ? "mission" : ""}">
             <span class="status-dot"></span>
-                ${member.status}
-            </span>
+            ${member.status}
+        </span>
 
         <span class="crew-card__rank">
-        ⭐ Rank ${member.rank}
-      </span>
+          ⭐ Energia ${member.energia}
+        </span>
 
-      <img 
-        class="crew-card__img" 
-        src="${member.img}" 
-        alt="Foto de ${member.nome}" 
-        loading="lazy"
-      >
+        <img 
+          class="crew-card__img" 
+          src="${member.img}" 
+          alt="Foto de ${member.nome}" 
+          loading="lazy"
+        >
     </div>
 
     <div class="crew-card__body">
       <p class="crew-card__id">${member.id}</p>
-
       <h3 class="crew-card__name">${member.nome}</h3>
-
       <p class="crew-card__role">${member.funcao}</p>
-
+      <p class="crew-card__role-desc">${funcaoDesc[member.funcao]}</p>
       <div class="crew-card__divider"></div>
-
       <p class="crew-card__quirk">${member.resumo}</p>
-
       <div class="crew-card__tags">
         ${member.skills
           .slice(0, 2)
@@ -269,10 +299,7 @@ function renderCard(member, delay) {
   return card;
 }
 
-// ==========================
-// MOSTRAR CARDS NA TELA
-// ==========================
-
+// renderizar grid
 function renderGrid(crew) {
   const grid = document.getElementById("tripExib");
   const countEl = document.getElementById("tripQnt");
@@ -296,7 +323,6 @@ function renderGrid(crew) {
         <p>Tente escolher outra função.</p>
       </div>
     `;
-
     return;
   }
 
@@ -305,37 +331,31 @@ function renderGrid(crew) {
   });
 }
 
-// ==========================
-// ABRIR MODAL DETALHADO
-// ==========================
-
+// abrir modal
 function openModal(member) {
   document.getElementById("modalImg").src = member.img;
   document.getElementById("modalImg").alt = "Foto de " + member.nome;
 
   document.getElementById("modalId").textContent = member.id;
   document.getElementById("modalName").textContent = member.nome;
-  document.getElementById("modalRole").textContent = member.funcao;
+  document.getElementById("modalRole").textContent = member.funcao + " — " + funcaoDesc[member.funcao];
 
   document.getElementById("modalStats").innerHTML = `
-    <div class="stat">
-      <div class="stat__label">Missões</div>
-      <div class="stat__val">${member.missao}</div>
-    </div>
-
-    <div class="stat">
-      <div class="stat__label">Rank</div>
-      <div class="stat__val">⭐ ${member.rank}</div>
-    </div>
-
     <div class="stat">
       <div class="stat__label">Idade</div>
       <div class="stat__val">${member.idade} anos</div>
     </div>
-
     <div class="stat">
-      <div class="stat__label">Planeta</div>
-      <div class="stat__val">${member.planeta}</div>
+      <div class="stat__label">Energia</div>
+      <div class="stat__val">⭐ ${member.energia}</div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">No abrigo há</div>
+      <div class="stat__val stat__val--small">${member.tempoAbrigo} ${member.tempoAbrigo === 1 ? "mês" : "meses"}</div>
+    </div>
+    <div class="stat">
+      <div class="stat__label">Resgatado em</div>
+      <div class="stat__val stat__val--small">${member.origem}</div>
     </div>
   `;
 
@@ -347,14 +367,25 @@ function openModal(member) {
     .map(skill => `<span class="tag">${skill}</span>`)
     .join("");
 
+  // botão adotar
+  const modalFooter = document.getElementById("modalFooter");
+  if (member.status === "Disponível") {
+    modalFooter.innerHTML = `
+      <a href="Voluntariado.html" class="btn btn-primary modal__adopt-btn">
+        🐾 Adotar este tripulante
+      </a>
+    `;
+  } else {
+    modalFooter.innerHTML = `
+      <p class="modal__adopted-msg">✓ Este tripulante já encontrou seu lar</p>
+    `;
+  }
+
   document.getElementById("modalOverlay").classList.add("open");
   document.body.style.overflow = "hidden";
 }
 
-// ==========================
-// FECHAR MODAL
-// ==========================
-
+// fechar modal
 function closeModal() {
   document.getElementById("modalOverlay").classList.remove("open");
   document.body.style.overflow = "";
@@ -363,21 +394,14 @@ function closeModal() {
 document.getElementById("modalClose").addEventListener("click", closeModal);
 
 document.getElementById("modalOverlay").addEventListener("click", event => {
-  if (event.target.id === "modalOverlay") {
-    closeModal();
-  }
+  if (event.target.id === "modalOverlay") closeModal();
 });
 
 document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    closeModal();
-  }
+  if (event.key === "Escape") closeModal();
 });
 
-// ==========================
-// FILTROS
-// ==========================
-
+// filtros
 document.getElementById("filterBar").addEventListener("click", event => {
   const button = event.target.closest(".filter-btn");
 
@@ -388,14 +412,8 @@ document.getElementById("filterBar").addEventListener("click", event => {
   });
 
   button.classList.add("active");
-
   activeFilter = button.dataset.filter;
-
   renderGrid(allCrew);
 });
 
-// ==========================
-// INICIAR PÁGINA
-// ==========================
-
-renderGrid(allCrew);
+init();

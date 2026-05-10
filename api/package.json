@@ -1,0 +1,26 @@
+{
+  "name": "gatonautas-api",
+  "version": "1.0.0",
+  "description": "API do projeto Gatonautas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlanT50/Trabalho-PW---Gatonautas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/PlanT50/Trabalho-PW---Gatonautas/issues"
+  },
+  "homepage": "https://github.com/PlanT50/Trabalho-PW---Gatonautas#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

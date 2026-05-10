@@ -2,50 +2,98 @@
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>Miss&otilde;es</title>
+        <title>Missões</title>
         <link rel="stylesheet" href="assets/css/global.css" />
         <link rel="stylesheet" href="assets/css/header.css" />
         <link rel="stylesheet" href="assets/css/footer.css" />
+        <link rel="stylesheet" href="assets/css/cidades.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
     <body>
-       <header class="site-header" data-header>
+        <header class="site-header" data-header>
             <div class="container">
                 <div class="site-header__bar">
                     <a class="site-header__brand" href="PaginaInicial.html">
                         <div class="site-header__logo">🪐</div>
                         <div class="site-header__brand-text">
                             <strong class="site-header__title">GATON IX</strong>
-                            <span class="site-header__subtitle">Ronrons al&eacute;m das estrelas</span>
+                            <span class="site-header__subtitle">Ronrons além das estrelas</span>
                         </div>
                     </a>
-
-                    <button
-                    class="site-header__toggle"
-                    type="button"
-                    aria-label="Abrir menu"
-                    aria-expanded="false"
-                    data-menu-toggle
-                    ></button>
-
+                    <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle></button>
                     <nav class="site-header__nav" aria-label="Principal">
-                    <ul class="site-header__menu">
-                        <li><a class="site-header__link" href="PaginaInicial.html">In&iacute;cio</a></li>
-                        <li><a class="site-header__link" href="Tripulacao.html">Tripula&ccedil;&atilde;o</a></li>
-                        <li><a class="site-header__link" href="Missoes.html">Miss&otilde;es</a></li>
-                        <li><a class="site-header__link" href="Loja.html">Loja</a></li>
-                        <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
-                        <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
-                        <li><a class="site-header__link" href="Diario.html">Di&aacute;rio</a></li>
-                    </ul>
+                        <ul class="site-header__menu">
+                            <li><a class="site-header__link" href="PaginaInicial.html">Início</a></li>
+                            <li><a class="site-header__link" href="Tripulacao.html">Tripulação</a></li>
+                            <li><a class="site-header__link active" href="Missoes.html">Missões</a></li>
+                            <li><a class="site-header__link" href="Loja.html">Loja</a></li>
+                            <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
+                            <li><a class="site-header__link" href="Voluntariado.html">Voluntariado</a></li>
+                            <li><a class="site-header__link" href="Diario.html">Diário</a></li>
+                        </ul>
                     </nav>
-
                     <div class="site-header__actions">
-                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na miss&atilde;o</a>
+                        <a class="btn btn-primary site-header__mission-btn" href="Missoes.html">Entrar na missão</a>
                     </div>
                 </div>
             </div>
         </header>
+
+        <main>
+            <section class="cat-cities section">
+                <div class="container">
+                    <div class="city-box page-hero">
+                        <h1 class="city-title section-title">Cidades Felinas</h1>
+                        <h2 class="city-description section-text">
+                            Aqui é onde os gatonautas visitam cidades cheias de bigodes, ronrons e novas chances de adoção.
+                        </h2>
+                        <p class="city-description2 section-text">
+                            Escolha uma cidade abaixo e mande um ou mais gatinhos para espalhar carinho, brinquedinhos e esperança por lá.
+                        </p>
+                    </div>
+
+                    <section class="cities" aria-label="Cidades disponíveis">
+                        <div class="city-card card ronronopolis">
+                            <h3 class="text-city">Ronronópolis</h3>
+                            <button class="btn btn-primary city-open" data-city="Ronronópolis">Visitar cidade</button>
+                        </div>
+                        <div class="city-card card bigodopolis">
+                            <h3 class="text-city">Bigodópolis</h3>
+                            <button class="btn btn-primary city-open" data-city="Bigodópolis">Visitar cidade</button>
+                        </div>
+                        <div class="city-card card miau-horizonte">
+                            <h3 class="text-city">Miau Horizonte</h3>
+                            <button class="btn btn-primary city-open" data-city="Miau Horizonte">Visitar cidade</button>
+                        </div>
+                        <div class="city-card card sao-felino">
+                            <h3 class="text-city">São Felino</h3>
+                            <button class="btn btn-primary city-open" data-city="São Felino">Visitar cidade</button>
+                        </div>
+                        <div class="city-card card arranhaceu">
+                            <h3 class="text-city">Arranhacéu</h3>
+                            <button class="btn btn-primary city-open" data-city="Arranhacéu">Visitar cidade</button>
+                        </div>
+                        <div class="city-card card almofadinha-sul">
+                            <h3 class="text-city">Almofadinha do Sul</h3>
+                            <button class="btn btn-primary city-open" data-city="Almofadinha do Sul">Visitar cidade</button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <section class="city-selector" id="city-selector" aria-hidden="true">
+                <div class="city-panel">
+                    <div class="city-header">
+                        <h2>Escolha um GATONAUTA</h2>
+                        <button type="button" id="close-city" aria-label="Fechar">x</button>
+                    </div>
+                    <p id="selected-city"></p>
+                    <div id="crew-options"></div>
+                </div>
+            </section>
+        </main>
+
         <script src="assets/js/header.js"></script>
+        <script src="assets/js/missoes.js"></script>
     </body>
 </html>
