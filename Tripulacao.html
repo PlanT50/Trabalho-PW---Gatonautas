@@ -59,12 +59,49 @@
         </section>
 
         <section class="trip_membros" aria-label="Membros da Tripulação">
-            <div class="trip_qnt" id="tripQnt"></div>
-            <div class="trip_exib" id="tripExib">
-                <div class="crew-loading">
-                    <div class="orbit-loader"></div>
-                    <p>Recrutando tripulantes...</p>
+            <div class="trip_layout">
+                <div class="trip_main">
+                    <div class="trip_qnt" id="tripQnt"></div>
+                    <div class="trip_exib" id="tripExib">
+                        <div class="crew-loading">
+                            <div class="orbit-loader"></div>
+                            <p>Recrutando tripulantes...</p>
+                        </div>
+                    </div>
                 </div>
+
+                <aside class="srd-sidebar">
+                    <div class="srd-card card">
+                        <div class="srd-card__img-wrap">
+                            <img id="srdImg" src="" alt="SRD-4000" class="srd-card__img">
+                            <span class="srd-card__status-tag">GX-R001</span>
+                        </div>
+                        <div class="srd-card__body">
+                            <p class="srd-card__label">Gato-Robô Oficial</p>
+                            <h3 class="srd-card__name">SRD-4000</h3>
+                            <p class="srd-card__desc">Unidade felino-robótica de última geração. Ronrona em binário e detecta emoções humanas com precisão de 94,7%.</p>
+
+                            <div id="srd-adotar">
+                                <button class="btn btn-primary srd-card__btn" id="btnAdotarSrd">
+                                    <i class="fa-solid fa-heart"></i> Adotar SRD-4000
+                                </button>
+                                <p class="srd-card__hint" id="srdHint"></p>
+                            </div>
+
+                            <div id="srd-adotado" style="display:none">
+                                <div class="srd-adotado-badge">
+                                    <i class="fa-solid fa-circle-check"></i> Adotado por você!
+                                </div>
+                                <div class="srd-noticias">
+                                    <p class="srd-noticias__label">
+                                        <i class="fa-solid fa-satellite-dish"></i> Última transmissão:
+                                    </p>
+                                    <p class="srd-noticias__msg" id="srdNoticia"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
             </div>
         </section>
     </main>
