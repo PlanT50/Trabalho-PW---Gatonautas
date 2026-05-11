@@ -32,6 +32,11 @@
                         </ul>
                     </nav>
                     <div class="site-header__actions">
+                        <div id="headerAuth">
+                            <a class="btn btn-secondary" href="Login.html">
+                                <i class="fa-solid fa-user"></i> Login
+                            </a>
+                        </div>
                         <a class="btn btn-primary site-header__mission-btn" href="Voluntariado.html">Voluntarie-se</a>
                     </div>
                 </div>
@@ -143,5 +148,19 @@
             </div>
         </footer>
         <script src="assets/js/header.js"></script>
+        <script>
+            const usuario = JSON.parse(localStorage.getItem("gaton_usuario"));
+            const headerAuth = document.getElementById("headerAuth");
+            if (usuario) {
+                headerAuth.innerHTML = `
+                    <span style="color:var(--purple-3);font-weight:600;font-size:0.9rem;">
+                        <i class="fa-solid fa-user-astronaut"></i> ${usuario.nome.split(" ")[0]}
+                    </span>
+                    <button onclick="localStorage.removeItem('gaton_usuario');location.reload();"
+                        class="btn btn-secondary" style="padding:0 14px;min-height:40px;font-size:0.88rem;">
+                        <i class="fa-solid fa-right-from-bracket"></i> Sair
+                    </button>`;
+            }
+        </script>
     </body>
 </html>
