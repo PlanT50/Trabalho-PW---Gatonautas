@@ -19,6 +19,8 @@ const gatos = [
 const planetas = {
   "Planeta Ronronópolis": {
     area: "Resgate",
+    imagemAntes: "assets/imgs/coruscant_destruida.webp",
+    imagemDepois: "assets/imgs/coruscant.webp",
     objetivo: "Localizar gatos em risco, fazer aproximação segura e levar cada resgatado para avaliação inicial.",
     transformacoes: [
       {
@@ -35,6 +37,8 @@ const planetas = {
   },
   "Planeta Bigodópolis": {
     area: "Acolhimento",
+    imagemAntes: "assets/imgs/tatooine.jpg",
+    imagemDepois: "assets/imgs/tatooine.jpg",
     objetivo: "Organizar lares temporários, adaptação, socialização e rotina tranquila para os gatos recém-resgatados.",
     transformacoes: [
       {
@@ -51,6 +55,8 @@ const planetas = {
   },
   "Planeta Miau Horizonte": {
     area: "Saúde",
+    imagemAntes: "assets/imgs/krypton_destruida.jpg",
+    imagemDepois: "assets/imgs/krypton.webp",
     objetivo: "Acompanhar consultas, vacinas, castrações, exames e recuperação dos gatos atendidos pela ONG.",
     transformacoes: [
       {
@@ -67,6 +73,8 @@ const planetas = {
   },
   "Planeta São Felino": {
     area: "Adoção",
+    imagemAntes: "assets/imgs/namekusei_destruida.webp",
+    imagemDepois: "assets/imgs/namek-dragon-ball.webp",
     objetivo: "Conectar gatos prontos para adoção a famílias responsáveis e acompanhar a adaptação no novo lar.",
     transformacoes: [
       {
@@ -83,6 +91,8 @@ const planetas = {
   },
   "Planeta Arranhacéu": {
     area: "Educação",
+    imagemAntes: "assets/imgs/cybertron.jpg",
+    imagemDepois: "assets/imgs/cybertron2.jpg",
     objetivo: "Criar campanhas sobre castração, guarda responsável, telas de proteção e enriquecimento ambiental.",
     transformacoes: [
       {
@@ -99,6 +109,8 @@ const planetas = {
   },
   "Planeta Almofadinha do Sul": {
     area: "Reencontro",
+    imagemAntes: "assets/imgs/caprica_destruida.jpg",
+    imagemDepois: "assets/imgs/battlestar-galactica_caprica.avif",
     objetivo: "Ajudar famílias a encontrar gatos perdidos com divulgação, identificação e rede de apoio local.",
     transformacoes: [
       {
@@ -120,6 +132,8 @@ const STORAGE_KEY = "gatonautas-transformacoes";
 const citySelector = document.getElementById("city-selector");
 const selectedCity = document.getElementById("selected-city");
 const missionBriefText = document.getElementById("mission-brief-text");
+const missionPlanetBefore = document.getElementById("mission-planet-before");
+const missionPlanetAfter = document.getElementById("mission-planet-after");
 const transformationList = document.getElementById("transformation-list");
 const transformationCount = document.getElementById("transformation-count");
 const crewOptions = document.getElementById("crew-options");
@@ -152,6 +166,10 @@ function openCityPanel(planeta) {
 
   selectedCity.textContent = planeta;
   missionBriefText.textContent = dados.objetivo;
+  missionPlanetBefore.src = dados.imagemAntes;
+  missionPlanetBefore.alt = `${planeta} antes da missão`;
+  missionPlanetAfter.src = dados.imagemDepois;
+  missionPlanetAfter.alt = `${planeta} depois da missão`;
 
   showCats();
   renderTransformations();

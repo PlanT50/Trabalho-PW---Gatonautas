@@ -221,6 +221,65 @@
     line-height: 1.65;
 }
 
+.mission-planet-compare {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.mission-planet-preview {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(5, 8, 22, 0.5);
+}
+
+.mission-planet-preview img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+
+
+.mission-planet-preview--after img {
+    filter: saturate(1.35) brightness(1.08) contrast(1.04);
+}
+
+.mission-planet-preview--before::after,
+.mission-planet-preview--after::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.mission-planet-preview--before::after {
+    background: linear-gradient(180deg, rgba(5, 8, 22, 0.2), rgba(5, 8, 22, 0.62));
+}
+
+.mission-planet-preview--after::after {
+    background: radial-gradient(circle at 70% 22%, rgba(214, 163, 79, 0.26), transparent 38%);
+}
+
+.mission-planet-preview figcaption {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 1;
+    padding: 5px 9px;
+    border-radius: 999px;
+    background: rgba(5, 8, 22, 0.78);
+    color: var(--text-main);
+    font-size: 0.62rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    backdrop-filter: blur(6px);
+}
+
 #crew-options {
     display: flex;
     flex-wrap: wrap;
@@ -330,5 +389,17 @@
     .transformation-log__header {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .transformation-item {
+        grid-template-columns: 1fr;
+    }
+
+    .transformation-item__icon {
+        display: none;
+    }
+
+    .mission-planet-compare {
+        grid-template-columns: 1fr;
     }
 }
