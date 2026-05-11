@@ -147,12 +147,23 @@
   .site-header__bar {
     flex-wrap: wrap;
     padding: 12px 14px;
+    gap: 10px;
   }
 
   .site-header__toggle {
     display: inline-grid;
     place-items: center;
     margin-left: auto;
+  }
+
+  .site-header__toggle::before {
+    content: "☰";
+    font-size: 1.3rem;
+    color: var(--text-main);
+  }
+
+  .site-header.is-open .site-header__toggle::before {
+    content: "✕";
   }
 
   .site-header__nav {
@@ -189,7 +200,20 @@
   }
 
   .site-header__actions {
+    display: none;
+    order: 4;
     width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .site-header.is-open .site-header__actions {
+    display: flex;
+  }
+
+  .site-header__actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 
   .site-header__city-btn {

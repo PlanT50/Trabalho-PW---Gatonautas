@@ -1,5 +1,5 @@
 .login-section {
-    padding: 60px 0 90px;
+    padding: 56px 0 80px;
 }
 
 .login-wrapper {
@@ -204,12 +204,25 @@
 }
 
 @media (max-width: 600px) {
+    .login-section {
+        padding: 28px 0 48px;
+    }
+
+    .login-wrapper {
+        width: 100%;
+    }
+
     .login-card {
-        padding: 28px 20px;
+        padding: 24px 16px;
     }
 
     .login-tab {
-        font-size: 0.88rem;
-        padding: 10px 10px;
+        font-size: 0.85rem;
+        padding: 10px 8px;
+        gap: 5px;
+    }
+
+    .login-title {
+        font-size: 1.4rem;
     }
 }
