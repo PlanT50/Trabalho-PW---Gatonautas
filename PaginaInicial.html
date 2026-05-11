@@ -126,6 +126,52 @@
                     </div>
                 </div>
             </section>
+            <!-- TRIPULAÇÃO HONORÁRIA -->
+            <section class="honoraria section">
+                <div class="container">
+                    <div class="honoraria__header">
+                        <p class="home-cat_tag">✦ TRIPULAÇÃO HONORÁRIA ✦</p>
+                        <h2 class="honoraria__title section-title">FAÇA PARTE DA <span class="text-gradient">MISSÃO</span></h2>
+                        <p class="honoraria__sub section-text">
+                            Todo grande explorador começa com um título. Receba o seu posto oficial na Gaton IX e entre para a história cósmica.
+                        </p>
+                    </div>
+
+                    <div class="honoraria__content">
+                        <div id="honoraria-sem-login" class="honoraria__estado">
+                            <i class="fa-solid fa-rocket honoraria__icone"></i>
+                            <p>Faça login para receber seu título honorário na tripulação da Gaton IX.</p>
+                            <a href="Login.html?redirect=PaginaInicial.html" class="btn btn-primary">
+                                <i class="fa-solid fa-user"></i> Fazer login
+                            </a>
+                        </div>
+
+                        <div id="honoraria-entrar" class="honoraria__estado" style="display:none">
+                            <i class="fa-solid fa-user-astronaut honoraria__icone"></i>
+                            <p>Você ainda não faz parte da tripulação honorária. Clique para receber seu título!</p>
+                            <button id="btnReceberTitulo" class="btn btn-primary">
+                                <i class="fa-solid fa-star"></i> Receber meu título
+                            </button>
+                        </div>
+
+                        <div id="honoraria-card" class="honoraria__card card" style="display:none">
+                            <div class="honoraria__card-topo">
+                                <i class="fa-solid fa-shield-halved honoraria__emblema"></i>
+                                <div>
+                                    <p class="honoraria__card-label">MEMBRO OFICIAL</p>
+                                    <h3 class="honoraria__card-nome" id="hon-nome"></h3>
+                                </div>
+                            </div>
+                            <div class="honoraria__card-titulo" id="hon-titulo"></div>
+                            <p class="honoraria__card-desc" id="hon-desc"></p>
+                            <div class="honoraria__card-rodape">
+                                <span class="honoraria__card-id" id="hon-id"></span>
+                                <span class="honoraria__card-badge">Gaton IX · Tripulação Honorária</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
         <footer class="footer">
             <div class="container">
@@ -149,6 +195,7 @@
             </div>
         </footer>
         <script src="assets/js/header.js"></script>
+        <script src="assets/js/honoraria.js"></script>
         <script>
             const usuario = JSON.parse(localStorage.getItem("gaton_usuario"));
             const headerAuth = document.getElementById("headerAuth");
