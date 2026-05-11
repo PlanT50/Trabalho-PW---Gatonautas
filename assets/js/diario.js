@@ -24,7 +24,7 @@ const ENTRADAS_FIXAS = [
         data: "2025-04-20",
         categoria: "missao",
         autor: "Capitã Amora",
-        texto: "Missão cumprida. A cidade de Purr-Alpha estava em colapso gravitacional emocional. Luna Nebulosa plantou arranhadores solares em cada praça, Mika Andrômeda analisou os dados e Nox Eclipse fez os reparos no escuro — por escolha própria. Em 72 horas, os bairros recuperaram cor e disposição.",
+        texto: "Missão cumprida. O planeta Purr-Alpha enfrentava abandono em massa de gatos após a crise gravitacional. Resgatamos 27 felinos, montamos ponto de vacinação emergencial e deixamos Luna Nebulosa coordenando os lares temporários locais. Nox Eclipse fez os reparos na base de acolhimento no escuro — por escolha própria. Em 72 horas, o abrigo estava funcionando.",
         imagem: "nasa"
     },
     {
@@ -40,29 +40,29 @@ const ENTRADAS_FIXAS = [
     // ── PLANETAS ─────────────────────────────────────────────
     {
         id: "f2",
-        titulo: "Primeira cidade visitada: Miaulon-7",
+        titulo: "Resgate em Miaulon-7: 12 gatinhos acolhidos",
         data: "2025-02-03",
-        categoria: "cidade",
+        categoria: "planeta",
         autor: "Luna Nebulosa",
-        texto: "Miaulon-7 estava completamente abandonada e cinzenta. Luna Nebulosa distribuiu mudas de plantas alienígenas e Lyra Miau mapeou as constelações locais — nomeando uma delas em homenagem ao próprio rabo. Os moradores adotaram Pixel Garras como herói oficial por ter consertado o gerador em 10 minutos.",
+        texto: "Miaulon-7 estava abandonada — e repleta de gatinhos sem lar. Luna Nebulosa coordenou o resgate de 12 felinos, todos desnutridos mas cheios de ronron. Pixel Garras montou a estação de triagem em tempo recorde enquanto Lyra Miau registrava cada pelagem e personalidade. Ao partir, os moradores prometeram criar um ponto fixo de alimentação.",
         imagem: "nasa"
     },
     {
         id: "f7",
-        titulo: "Ronronix: a cidade que ronrona",
+        titulo: "Ronronix: primeiro abrigo interestelar da Gaton IX",
         data: "2025-03-14",
-        categoria: "cidade",
+        categoria: "planeta",
         autor: "Mika Andrômeda",
-        texto: "Descoberta histórica registrada por Mika Andrômeda: Ronronix emite frequências de ronron naturalmente pelo núcleo. A tripulação inteira dormiu por 11 horas na primeira noite. Bento Meteoro declarou o sono 'tecnicamente terapêutico'. Capitã Amora chamou de 'soneca tática' e incluiu no relatório oficial.",
+        texto: "Inauguramos o primeiro abrigo temporário da Gaton IX no planeta Ronronix. O local acolhe felinos resgatados até que famílias adotantes sejam encontradas. Mika Andrômeda organizou a triagem de saúde, Bento Meteoro garantiu a estrutura e a Capitã Amora aprovou o modelo como referência para futuros planetas. Oito gatinhos já aguardam adoção.",
         imagem: "nasa"
     },
     {
         id: "f8",
-        titulo: "Lua de Gelo de Felinópolis Prime",
+        titulo: "Operação Saúde em Felinópolis Prime",
         data: "2025-06-01",
-        categoria: "cidade",
-        autor: "Tico Lunar",
-        texto: "A lua glacial de Felinópolis Prime tem temperatura de -180°C. Tico Lunar tentou catalogar os cristais de gelo como 'artefatos alienígenas brilhantes'. Nina Cosmos aplicou aquecedor térmico em toda a equipe antes de sair. O gelo, analisado por Mika Andrômeda, sabe inexplicavelmente a atum.",
+        categoria: "planeta",
+        autor: "Nina Cosmos",
+        texto: "Missão de saúde em Felinópolis Prime: 34 gatos castrados, 89 vacinados e 7 encaminhados para tratamento especializado. Nina Cosmos liderou a equipe médica com maestria mesmo com as baixas temperaturas do planeta. Tico Lunar catalogou cada paciente com carinho. Resultado: população felina local 40% mais saudável.",
         imagem: "nasa"
     },
 
@@ -210,11 +210,17 @@ async function deletarEntradaAPI(id) {
     if (!res.ok) throw new Error("Erro ao remover entrada");
 }
 
+// ---- Usuário atual -----------------------------------------
+function usuarioAtual() {
+    try { return JSON.parse(localStorage.getItem("gaton_usuario")) || {}; }
+    catch (_) { return {}; }
+}
+
 // ---- Utilitários -------------------------------------------
 const LABELS = {
     missao: "Missão",
     tripulacao: "Tripulação",
-    cidade: "Cidade",
+    planeta: "Planeta",
     incidente: "Incidente"
 };
 
@@ -271,9 +277,14 @@ function renderizarTimeline(entradasAPI, filtro = "all") {
     const timeline = document.getElementById("timeline");
     const vazio    = document.getElementById("diarioVazio");
 
-    const todas = [...ENTRADAS_RESOLVIDAS, ...entradasAPI].sort((a, b) =>
-        new Date(b.data) - new Date(a.data)
-    );
+    const user = usuarioAtual();
+
+    const todas = [...ENTRADAS_RESOLVIDAS, ...entradasAPI]
+        .filter(e => {
+            if (e.status !== "rascunho") return true;
+            return e.emailAutor === user.email || e.autor === user.nome;
+        })
+        .sort((a, b) => new Date(b.data) - new Date(a.data));
 
     const filtradas = filtro === "all"
         ? todas
@@ -332,6 +343,10 @@ function initFormulario() {
         const aberto = !formBox.hidden;
         formBox.hidden = aberto;
         toggleBtn.setAttribute("aria-expanded", String(!aberto));
+        if (!aberto) {
+            const autorInput = document.getElementById("entradaAutor");
+            if (!autorInput.value) autorInput.value = usuarioAtual().nome || "";
+        }
     });
 
     cancelarBtn.addEventListener("click", () => {
@@ -357,12 +372,15 @@ function initFormulario() {
         salvarBtn.disabled = true;
         salvarBtn.textContent = "Transmitindo...";
 
+        const user = usuarioAtual();
+
         try {
             await salvarEntradaAPI({
                 titulo,
                 data,
                 categoria,
-                autor: autor || "Tripulante Anônimo",
+                autor: autor || user.nome || "Tripulante Anônimo",
+                emailAutor: user.email || "",
                 texto,
                 imagem,
                 status
