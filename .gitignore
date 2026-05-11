@@ -1,2 +1,4 @@
 node_modules/
 .claude/
+.vscode/
+api/Banco_De_Dados_api/src/main/resources/application-example.properties
