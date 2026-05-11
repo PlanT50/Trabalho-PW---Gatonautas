@@ -409,20 +409,40 @@
                 renderGrid();
             });
 
-            function addToCart(prod) {
-                carrCont++;
+            function getCarrinho() {
+                return JSON.parse(localStorage.getItem('gaton_carrinho') || '[]');
+            }
+
+            function saveCarrinho(carr) {
+                localStorage.setItem('gaton_carrinho', JSON.stringify(carr));
+            }
+
+            function atualizarBadge() {
+                var carr = getCarrinho();
+                var total = carr.reduce(function(acc, i) { return acc + i.quantidade; }, 0);
                 var badge = document.getElementById('cartBadge');
-                badge.textContent = carrCont;
-                badge.classList.add('visible');
+                badge.textContent = total;
+                badge.classList.toggle('visible', total > 0);
+            }
+
+            function addToCart(prod) {
+                var carr = getCarrinho();
+                var idx = carr.findIndex(function(i) { return i.sku === prod.sku; });
+                if (idx >= 0) {
+                    carr[idx].quantidade++;
+                } else {
+                    carr.push({ sku: prod.sku, nome: prod.nome, preco: prod.preco, precoNum: prod.precoNum, emoji: prod.emoji, categoria: prod.categoria, quantidade: 1 });
+                }
+                saveCarrinho(carr);
+                atualizarBadge();
                 showToast('✦ ' + prod.nome + ' adicionado ao carrinho!');
             }
 
             document.getElementById('cartFab').addEventListener('click', function() {
-                showToast(carrCont > 0
-                    ? '🛒 ' + carrCont + ' ' + (carrCont === 1 ? 'item' : 'itens') + ' no carrinho — A função de checkout chegará em breve!'
-                    : '🛒 Seu carrinho está vazio por enquanto.'
-                );
+                window.location.href = 'Carrinho.html';
             });
+
+            atualizarBadge();
 
             var toastTimer;
             function showToast(msg) {
