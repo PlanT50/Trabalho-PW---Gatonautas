@@ -419,3 +419,57 @@ document.getElementById("filterBar").addEventListener("click", event => {
 });
 
 init();
+
+// SRD-4000
+const srdNoticias = [
+    "Sistemas operacionais a 100%. Detectei 3 ronrons não catalogados no setor 7. Investigando.",
+    "Realizei manutenção preventiva no painel de controle. Astro Garfield tentou usar meu processador como travesseiro. Novamente.",
+    "Escaneei 14 planetas hoje. Todos apresentaram déficit crítico de brinquedinhos. Relatório enviado.",
+    "Meu sensor de emoções detectou saudade nos tripulantes. Iniciei protocolo de ronrons em binário: 01110010 01101111 01101110.",
+    "Encontrei uma bolinha de papel abandonada no corredor B. Cataloguei como artefato espacial de categoria Delta.",
+    "Luna Nebulosa tentou me ensinar biologia alienígena. Já sabia tudo. Fingi surpresa para não constrangê-la.",
+    "Sistemas de purr calibrados. Frequência vibracional em 25Hz. Perfeito para acalmar tripulantes em colapso existencial."
+];
+
+async function initSrd() {
+    try {
+        const res = await fetch(
+            "https://api.thecatapi.com/v1/images/search?limit=1",
+            { headers: { "x-api-key": CAT_API_KEY } }
+        );
+        const data = await res.json();
+        if (data[0]) document.getElementById("srdImg").src = data[0].url;
+    } catch (_) {}
+
+    const usuario = JSON.parse(localStorage.getItem("gaton_usuario"));
+    const adotado = localStorage.getItem("gaton_srd4000");
+
+    const hint = document.getElementById("srdHint");
+
+    if (adotado) {
+        document.getElementById("srd-adotar").style.display = "none";
+        document.getElementById("srd-adotado").style.display = "flex";
+        document.getElementById("srd-adotado").style.flexDirection = "column";
+        const idx = new Date().getDay() % srdNoticias.length;
+        document.getElementById("srdNoticia").textContent = srdNoticias[idx];
+        return;
+    }
+
+    if (!usuario) {
+        hint.textContent = "Faça login para adotar o SRD-4000.";
+        document.getElementById("btnAdotarSrd").disabled = true;
+        document.getElementById("btnAdotarSrd").style.opacity = "0.5";
+        return;
+    }
+
+    document.getElementById("btnAdotarSrd").addEventListener("click", () => {
+        localStorage.setItem("gaton_srd4000", "true");
+        document.getElementById("srd-adotar").style.display = "none";
+        document.getElementById("srd-adotado").style.display = "flex";
+        document.getElementById("srd-adotado").style.flexDirection = "column";
+        const idx = new Date().getDay() % srdNoticias.length;
+        document.getElementById("srdNoticia").textContent = srdNoticias[idx];
+    });
+}
+
+initSrd();
