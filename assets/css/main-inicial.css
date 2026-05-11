@@ -143,6 +143,157 @@
     flex-shrink: 0;
 }
 
+/* TRIPULAÇÃO HONORÁRIA */
+.honoraria {
+    margin-top: 32px;
+}
+
+.honoraria__header {
+    text-align: center;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.honoraria__title {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.honoraria__sub {
+    max-width: 580px;
+    text-align: center;
+}
+
+.honoraria__content {
+    display: flex;
+    justify-content: center;
+}
+
+.honoraria__estado {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    text-align: center;
+    max-width: 440px;
+    padding: 40px 32px;
+    background: linear-gradient(180deg, rgba(18, 24, 58, 0.92), rgba(9, 13, 34, 0.96));
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.honoraria__estado p {
+    color: var(--text-soft);
+    line-height: 1.6;
+}
+
+.honoraria__icone {
+    font-size: 2.4rem;
+    color: var(--purple-3);
+    line-height: 1;
+}
+
+/* Card de membro */
+.honoraria__card {
+    width: 100%;
+    max-width: 480px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid rgba(155, 109, 255, 0.4);
+    box-shadow: var(--shadow-glow), var(--shadow-soft);
+    animation: cardEntrada 0.5s ease both;
+}
+
+@keyframes cardEntrada {
+    from { opacity: 0; transform: translateY(20px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.honoraria__card-topo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.honoraria__emblema {
+    font-size: 2.4rem;
+    color: var(--purple-2);
+    line-height: 1;
+    filter: drop-shadow(0 0 12px rgba(155, 109, 255, 0.5));
+}
+
+.honoraria__card-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--purple-3);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.honoraria__card-nome {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.honoraria__card-titulo {
+    font-family: var(--font-title);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, rgba(107, 77, 255, 0.2), rgba(77, 184, 255, 0.1));
+    border: 1px solid rgba(155, 109, 255, 0.35);
+    color: var(--purple-3);
+    text-align: center;
+}
+
+.honoraria__card-desc {
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    line-height: 1.65;
+    font-style: italic;
+    text-align: center;
+}
+
+.honoraria__card-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+}
+
+.honoraria__card-id {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.honoraria__card-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(155, 109, 255, 0.15);
+    border: 1px solid rgba(155, 109, 255, 0.3);
+    color: var(--purple-3);
+}
+
 /* RESPONSIVO*/
 @media (max-width: 900px) {
     .home-cat-box {
@@ -190,5 +341,16 @@
     .home-cat__btn .btn {
         width: 100%;
         justify-content: center;
+    }
+
+    .honoraria__estado,
+    .honoraria__card {
+        padding: 28px 18px;
+    }
+
+    .honoraria__card-rodape {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
