@@ -37,8 +37,8 @@ const planetas = {
   },
   "Planeta Bigodópolis": {
     area: "Acolhimento",
-    imagemAntes: "assets/imgs/tatooine.jpg",
-    imagemDepois: "assets/imgs/tatooine.jpg",
+    imagemAntes: "assets/imgs/mars2.jpg",
+    imagemDepois: "assets/imgs/mars.webp",
     objetivo: "Organizar lares temporários, adaptação, socialização e rotina tranquila para os gatos recém-resgatados.",
     transformacoes: [
       {
