@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login — Gaton IX</title>
+        <link rel="stylesheet" href="assets/css/global.css" />
+        <link rel="stylesheet" href="assets/css/header.css" />
+        <link rel="stylesheet" href="assets/css/login.css" />
+        <link rel="stylesheet" href="assets/css/footer.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </head>
+    <body>
+        <header class="site-header" data-header>
+            <div class="container">
+                <div class="site-header__bar">
+                    <a class="site-header__brand" href="PaginaInicial.html">
+                        <div class="site-header__logo">🪐</div>
+                        <div class="site-header__brand-text">
+                            <strong class="site-header__title">GATON IX</strong>
+                            <span class="site-header__subtitle">Ronrons além das estrelas</span>
+                        </div>
+                    </a>
+                    <button class="site-header__toggle" type="button" aria-label="Abrir menu" aria-expanded="false" data-menu-toggle></button>
+                    <nav class="site-header__nav" aria-label="Principal">
+                        <ul class="site-header__menu">
+                            <li><a class="site-header__link" href="PaginaInicial.html">Início</a></li>
+                            <li><a class="site-header__link" href="Tripulacao.html">Tripulação</a></li>
+                            <li><a class="site-header__link" href="Missoes.html">Missões</a></li>
+                            <li><a class="site-header__link" href="Loja.html">Loja</a></li>
+                            <li><a class="site-header__link" href="Mensagens.html">Mensagens</a></li>
+                            <li><a class="site-header__link" href="Diario.html">Diário</a></li>
+                        </ul>
+                    </nav>
+                    <div class="site-header__actions">
+                        <a class="btn btn-primary site-header__mission-btn" href="Voluntariado.html">Voluntarie-se</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="login-section">
+                <div class="container">
+                    <div class="login-wrapper">
+                        <div class="login-header">
+                            <p class="login-tag">✦ CENTRAL DE OPERAÇÕES ✦</p>
+                            <h1 class="login-title section-title">ACESSO À <span class="text-gradient">GATON IX</span></h1>
+                            <p class="login-subtitle">Identifique-se para fazer parte da missão cósmica</p>
+                        </div>
+
+                        <div class="login-card card">
+                            <div class="login-tabs">
+                                <button class="login-tab active" data-tab="login" type="button">
+                                    <i class="fa-solid fa-rocket"></i> Entrar
+                                </button>
+                                <button class="login-tab" data-tab="cadastro" type="button">
+                                    <i class="fa-solid fa-user-astronaut"></i> Cadastrar
+                                </button>
+                            </div>
+
+                            <!-- LOGIN -->
+                            <div class="login-panel active" id="panel-login">
+                                <form id="formLogin" novalidate>
+                                    <div class="login-field">
+                                        <label for="loginEmail">
+                                            <i class="fa-solid fa-envelope"></i> E-mail
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="loginEmail"
+                                            name="email"
+                                            placeholder="seu@email.com"
+                                            autocomplete="email"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="login-field">
+                                        <label for="loginSenha">
+                                            <i class="fa-solid fa-lock"></i> Senha
+                                        </label>
+                                        <div class="login-field__password">
+                                            <input
+                                                type="password"
+                                                id="loginSenha"
+                                                name="senha"
+                                                placeholder="Sua senha secreta"
+                                                autocomplete="current-password"
+                                                required
+                                            />
+                                            <button type="button" class="toggle-senha" aria-label="Mostrar senha" data-target="loginSenha">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="login-msg" id="loginMsg" aria-live="polite"></div>
+
+                                    <button type="submit" class="btn btn-primary login-submit" id="btnLogin">
+                                        <i class="fa-solid fa-arrow-right-to-bracket"></i> Entrar na nave
+                                    </button>
+                                </form>
+
+                                <p class="login-switch">
+                                    Ainda não tem uma conta?
+                                    <button type="button" class="login-switch__btn" data-goto="cadastro">Cadastre-se</button>
+                                </p>
+                            </div>
+
+                            <!-- CADASTRO -->
+                            <div class="login-panel" id="panel-cadastro">
+                                <form id="formCadastro" novalidate>
+                                    <div class="login-field">
+                                        <label for="cadNome">
+                                            <i class="fa-solid fa-cat"></i> Nome completo
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="cadNome"
+                                            name="nome"
+                                            placeholder="Seu nome de tripulante"
+                                            autocomplete="name"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="login-field">
+                                        <label for="cadEmail">
+                                            <i class="fa-solid fa-envelope"></i> E-mail
+                                        </label>
+                                        <input
+                                            type="email"
+                                            id="cadEmail"
+                                            name="email"
+                                            placeholder="seu@email.com"
+                                            autocomplete="email"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="login-field">
+                                        <label for="cadSenha">
+                                            <i class="fa-solid fa-lock"></i> Senha
+                                        </label>
+                                        <div class="login-field__password">
+                                            <input
+                                                type="password"
+                                                id="cadSenha"
+                                                name="senha"
+                                                placeholder="Crie uma senha segura"
+                                                autocomplete="new-password"
+                                                required
+                                            />
+                                            <button type="button" class="toggle-senha" aria-label="Mostrar senha" data-target="cadSenha">
+                                                <i class="fa-solid fa-eye"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div class="login-field">
+                                        <label for="cadEndereco">
+                                            <i class="fa-solid fa-location-dot"></i> Endereço
+                                        </label>
+                                        <input
+                                            type="text"
+                                            id="cadEndereco"
+                                            name="endereco"
+                                            placeholder="Sua base terrestre"
+                                            autocomplete="street-address"
+                                            required
+                                        />
+                                    </div>
+
+                                    <div class="login-msg" id="cadastroMsg" aria-live="polite"></div>
+
+                                    <button type="submit" class="btn btn-primary login-submit" id="btnCadastro">
+                                        <i class="fa-solid fa-user-plus"></i> Entrar para a tripulação
+                                    </button>
+                                </form>
+
+                                <p class="login-switch">
+                                    Já tem uma conta?
+                                    <button type="button" class="login-switch__btn" data-goto="login">Faça login</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>GATON IX</h3>
+                        <p>Uma família disfuncional que ama explorar o cosmos</p>
+                    </div>
+                    <div class="footer-social">
+                        <h3>SIGA A GATON IX</h3>
+                        <div class="footer-links">
+                            <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-email">
+                        <h3>RECEBA ATUALIZAÇÕES</h3>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="assets/js/header.js"></script>
+        <script src="assets/js/login.js"></script>
+    </body>
+</html>

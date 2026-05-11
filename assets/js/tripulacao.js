@@ -370,8 +370,10 @@ function openModal(member) {
   // botão adotar
   const modalFooter = document.getElementById("modalFooter");
   if (member.status === "Disponível") {
+    const logado = localStorage.getItem("gaton_usuario");
+    const destino = logado ? "Voluntariado.html" : "Login.html?redirect=Tripulacao.html";
     modalFooter.innerHTML = `
-      <a href="Voluntariado.html" class="btn btn-primary modal__adopt-btn">
+      <a href="${destino}" class="btn btn-primary modal__adopt-btn">
         🐾 Adotar este tripulante
       </a>
     `;
