@@ -657,6 +657,7 @@
     .srd-sidebar {
         width: 100%;
         position: static;
+        order: -1;
     }
 
     .srd-card {
