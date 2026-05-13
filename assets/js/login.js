@@ -1,4 +1,4 @@
-const API_BASE = "https://engulf-deafness-trouble.ngrok-free.dev";
+const API_BASE = "http://localhost:8080";
 
 const tabs = document.querySelectorAll(".login-tab");
 const panels = document.querySelectorAll(".login-panel");
@@ -64,8 +64,7 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
         const res = await fetch(`${API_BASE}/usuarios/login`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "ngrok-skip-browser-warning": "true"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ email, senha })
         });
@@ -120,8 +119,7 @@ document.getElementById("formCadastro").addEventListener("submit", async (e) => 
         const res = await fetch(`${API_BASE}/usuarios/cadastro`, {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "ngrok-skip-browser-warning": "true"
+                "Content-Type": "application/json"
             },
             body: JSON.stringify({ nome, email, senha, endereco })
         });

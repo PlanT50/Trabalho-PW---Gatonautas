@@ -1,9 +1,8 @@
-const DIARIO_API_URL = "https://engulf-deafness-trouble.ngrok-free.dev/diario";
+const DIARIO_API_URL = "http://localhost:8080/diario";
 
-const HEADERS_BASE = { "ngrok-skip-browser-warning": "true" };
+const HEADERS_BASE = {};
 const HEADERS_JSON = {
-    "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true"
+    "Content-Type": "application/json"
 };
 
 const ENTRADAS_FIXAS = [

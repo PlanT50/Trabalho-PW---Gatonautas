@@ -1,8 +1,7 @@
-const VOLUNTARIOS_API_URL = "https://engulf-deafness-trouble.ngrok-free.dev/voluntarios";
+const VOLUNTARIOS_API_URL = "http://localhost:8080/voluntarios";
 
 const HEADERS_JSON = {
-    "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true"
+    "Content-Type": "application/json"
 };
 
 const formVoluntariado = document.getElementById("formVoluntariado");
