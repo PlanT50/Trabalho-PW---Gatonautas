@@ -1,12 +1,9 @@
-const API_URL = "https://engulf-deafness-trouble.ngrok-free.dev/mensagens";
+const API_URL = "http://localhost:8080/mensagens";
 
-const HEADERS_BASE = {
-    "ngrok-skip-browser-warning": "true"
-};
+const HEADERS_BASE = {};
 
 const HEADERS_JSON = {
-    "Content-Type": "application/json",
-    "ngrok-skip-browser-warning": "true"
+    "Content-Type": "application/json"
 };
 
 const form = document.getElementById("formMensagem");
