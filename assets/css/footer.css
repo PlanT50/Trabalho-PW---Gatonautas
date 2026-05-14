@@ -12,6 +12,62 @@
     border: 1px solid transparent;
 }
 
+.footer-newsletter {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.footer-newsletter input[type="email"] {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color var(--transition);
+}
+
+.footer-newsletter input[type="email"]:focus {
+    border-color: var(--purple-3);
+}
+
+.footer-newsletter button {
+    padding: 0 16px;
+    font-size: 0.85rem;
+    min-height: 42px;
+    white-space: nowrap;
+}
+
+.footer-newsletter__msg {
+    margin-top: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.footer-newsletter__msg--ok  { color: #80ffb4; }
+.footer-newsletter__msg--erro { color: #ff8fab; }
+
+.footer {
+    padding: 40px 0 24px;
+}
+
+.footer-grid h3 {
+    font-family: var(--font-title);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+}
+
+.footer-links {
+    display: flex;
+    gap: 10px;
+}
+
 
 
 
