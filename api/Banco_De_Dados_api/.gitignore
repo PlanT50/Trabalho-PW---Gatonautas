@@ -13,9 +13,6 @@ target/
 # Logs
 *.log
 
-# Config with password
-src/main/resources/application.properties
-
 # OS files
 .DS_Store
 Thumbs.db
