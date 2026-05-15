@@ -1,4 +1,4 @@
-const DIARIO_API_URL = "http://localhost:8080/diario";
+const DIARIO_API_URL = "https://trabalho-pw-gatonautas.onrender.com/diario";
 
 const HEADERS_BASE = {};
 const HEADERS_JSON = {

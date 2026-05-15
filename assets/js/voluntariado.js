@@ -1,4 +1,4 @@
-const VOLUNTARIOS_API_URL = "http://localhost:8080/voluntarios";
+const VOLUNTARIOS_API_URL = "https://trabalho-pw-gatonautas.onrender.com/voluntarios";
 
 const HEADERS_JSON = {
     "Content-Type": "application/json"

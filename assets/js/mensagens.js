@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/mensagens";
+const API_URL = "https://trabalho-pw-gatonautas.onrender.com/mensagens";
 
 const HEADERS_BASE = {};
 

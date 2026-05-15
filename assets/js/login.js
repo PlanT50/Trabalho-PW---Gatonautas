@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8080";
+const API_BASE = "https://trabalho-pw-gatonautas.onrender.com";
 
 const tabs = document.querySelectorAll(".login-tab");
 const panels = document.querySelectorAll(".login-panel");
