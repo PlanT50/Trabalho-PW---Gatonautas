@@ -6,7 +6,7 @@ Site temático de uma ONG espacial felina fictícia, desenvolvido como projeto f
 
 ## Acesso
 
-O site está publicado e acessível em: **[link do Netlify]**
+O site está publicado e acessível em: **[https://sparkling-snickerdoodle-a1af91.netlify.app/paginainicial]**
 
 A API está hospedada no Render e não requer nenhuma configuração local para funcionar.
 
